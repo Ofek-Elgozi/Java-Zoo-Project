@@ -1,20 +1,20 @@
 package mobility;
 
-public class Mobile implements ILocatable {
-
+public abstract class Mobile implements ILocatable
+{
     private Point location;
     private double totalDistance;
 
     public Mobile(Point location)
     {
-        this.location.setX(location.getX());
-        this.location.setY(location.getY());
+        this.setLocation(location);
         this.totalDistance = 0;
     }
 
     public void addTotalDistance(double distance)
     {
-        this.totalDistance += distance;
+        if (distance > 0)
+            this.totalDistance += distance;
     }
 
     public double calcDistance(Point newLocation)
@@ -24,14 +24,30 @@ public class Mobile implements ILocatable {
         return Math.sqrt(Math.pow(X_coordinate, 2) + Math.pow(Y_coordinate, 2));
     }
 
-    //TODO
-    public double move(Point newLocation){
+
+    public double move(Point newLocation)
+    {
+        if(Point.checkBoundaries(newLocation) == true)
+        {
+            double distanceMade = this.calcDistance(newLocation);
+            this.addTotalDistance(distanceMade);
+            this.setLocation(newLocation);
+            return distanceMade;
+        }
         return 0;
     }
 
-    //TODO
-    public boolean setLocation(Point point) {
-        return true;
+    public boolean setLocation(Point point)
+    {
+        boolean isSuccess;
+        if(Point.checkBoundaries(point) == true)
+        {
+            isSuccess=true;
+            this.location = new Point(point);
+        }
+        else
+            isSuccess = false;
+        return isSuccess;
     }
 
     public Point getLocation() {

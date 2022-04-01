@@ -38,7 +38,6 @@ public class Animal implements IEdible
         this.diet = diet;
     }
 
-
     Animal(String s, Point p) {
 
     }

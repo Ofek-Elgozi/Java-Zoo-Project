@@ -11,7 +11,7 @@ public class Herbivore implements IDiet
     public boolean canEat(EFoodType food)
     {
         boolean isSuccess;
-        if(food == EFoodType.VEGETABLE == true)
+        if(food == EFoodType.VEGETABLE)
             isSuccess = true;
         else
             isSuccess=false;

@@ -73,7 +73,6 @@ public class MessageUtility {
 		} else {
 			System.err.println(str);
 		}
-
 	}
 
 	public static void logSound(String name, String message) {
