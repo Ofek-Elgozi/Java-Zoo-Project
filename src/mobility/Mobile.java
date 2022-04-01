@@ -1,5 +1,7 @@
 package mobility;
 
+import utilities.MessageUtility;
+
 public abstract class Mobile implements ILocatable
 {
     private Point location;
