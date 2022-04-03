@@ -8,12 +8,31 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-public class ZooActions {
+public class ZooActions
+{
     private static Scanner sc = new Scanner(System.in);
 
-    public static boolean eat(Object animal, IEdible food) {
-        if (animal instanceof Animal) {
-            return ((Animal) animal).eat(food);
+    public static boolean eat(Object animal, IEdible food)
+    {
+        if (animal instanceof Lion)//Lion
+        {
+            return ((Lion) animal).eat(food);
+        }
+        else if(animal instanceof Elephant)//Elephant
+        {
+            return ((Elephant) animal).eat(food);
+        }
+        else if(animal instanceof Giraffe)//Giraffe
+        {
+            return ((Giraffe) animal).eat(food);
+        }
+        else if(animal instanceof Bear)//Bear
+        {
+            return ((Bear) animal).eat(food);
+        }
+        else if(animal instanceof Turtle)//Turtle
+        {
+            return ((Turtle) animal).eat(food);
         }
         return false;
     }
@@ -27,7 +46,8 @@ public class ZooActions {
         return false;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         int size;
         int x;
@@ -69,7 +89,8 @@ public class ZooActions {
         sc.close();
     }
 
-    private static Animal[] BuildArrayAnimals(int size) {
+    private static Animal[] BuildArrayAnimals(int size)
+    {
         int Selection;
         Animal[] Animals_Array = new Animal[size];
 
@@ -86,10 +107,15 @@ public class ZooActions {
             
             System.out.print("Enter your choice:");
             Selection = sc.nextInt();
-            while (Selection <= 0 || Selection > 6) {
+            while (Selection <= 0 || Selection > 6)
+            {
                 System.out.println("Invalid input, please Enter a number between 1-6");
                 System.out.print("Enter your choice: ");
                 Selection = sc.nextInt();
+            }
+            if(Selection == 6)
+            {
+                System.exit(0);
             }
             System.out.println("Please Enter The Name Of The Animal:");
             String name = sc.next();
@@ -113,10 +139,6 @@ public class ZooActions {
                 case 5:
                     //Turtle
                     AddTurtle(name, Animals_Array, i);
-                    break;
-                case 6:
-                    // Terminate JVM
-                    System.exit(0);
                     break;
                 default:
                     //invalid input
@@ -168,7 +190,7 @@ public class ZooActions {
                 case 1:
                     //YES
                     System.out.print("Enter length of the neck (a real number between 1 - 2.5) : ");
-                    neckLength = sc.nextDouble();//TODO check if we need to validate this input
+                    neckLength = sc.nextDouble();
                     Animals_Array[i] = new Giraffe(name, neckLength);
                     break;
                 case 2:

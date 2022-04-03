@@ -32,23 +32,23 @@ public class Bear extends RoaringAnimal {
             return this.color;
         }
     }
-    //constructors
-    public Bear(String name) {
+
+    public Bear(String name)
+    {
         super(name, STARTING_POSITION);
-        MessageUtility.logConstractor("Bear", this.getName());
         this.setWeight(STARTING_WEIGHT);
         this.setFurColor(DEFAULT_FURCOLOR);
         this.setDiet(new Omnivore());
     }
 
-    public Bear(String name, String furColor) {
+    public Bear(String name, String furColor)
+    {
         super(name, STARTING_POSITION);
         this.setWeight(STARTING_WEIGHT);
         this.setFurColor(furColor);
         this.setDiet(new Omnivore());
     }
 
-    //API
     public boolean validFurColor(String furColor) {
         boolean isSuccess = false;
         for (FurColors color : FurColors.values()) {
@@ -63,7 +63,6 @@ public class Bear extends RoaringAnimal {
         MessageUtility.logSound(this.getName(), roar);
     }
 
-    //setters
     public boolean setFurColor(String furColor) {
         boolean isSuccess = false;
         if(validFurColor(furColor)){

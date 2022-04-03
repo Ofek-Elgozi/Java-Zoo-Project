@@ -19,10 +19,8 @@ public abstract class Animal extends Mobile implements IEdible {
         this.setName(name);
     }
 
-
     public abstract void makeSound();
     public abstract EFoodType getFoodtype();
-
 
     public boolean eat(IEdible food)
     {
@@ -54,7 +52,6 @@ public abstract class Animal extends Mobile implements IEdible {
         return distance;
     }
 
-    //setters
     public boolean setName(String name){
         boolean isSuccess = false;
         if(name.length() > 0) {
@@ -67,6 +64,7 @@ public abstract class Animal extends Mobile implements IEdible {
         MessageUtility.logSetter(name,"setName",this.name,isSuccess);
         return isSuccess;
     }
+
     public boolean setWeight(double weight){
         boolean isSuccess = false;
         if(weight > 0) {
@@ -79,13 +77,14 @@ public abstract class Animal extends Mobile implements IEdible {
         MessageUtility.logSetter(name,"setWeight",weight,isSuccess);
         return isSuccess;
     }
+
     public boolean setDiet(IDiet diet) {
         boolean isSuccess = true;
         this.diet = diet;
         MessageUtility.logSetter(this.getName(), "setDiet", this.diet, isSuccess);
         return isSuccess;
     }
-    //getters
+
     public String getName(){
         return this.name;
     }

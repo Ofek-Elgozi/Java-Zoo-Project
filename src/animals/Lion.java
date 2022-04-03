@@ -16,15 +16,12 @@ public class Lion extends RoaringAnimal {
     private static final String roar= "Roars, then stretches and shakes its mane";
     private int scarCount = 0;
 
-    //Constructors
     public Lion(String name){
         super(name,STARTING_POSITION);
-        MessageUtility.logConstractor("Lion", this.getName());
         this.setWeight(STARTING_WEIGHT);
         this.setDiet(new Carnivore());
     }
 
-    //API
     public void roar(){
         MessageUtility.logSound(this.getName(), roar);
     }
@@ -36,7 +33,7 @@ public class Lion extends RoaringAnimal {
         }
         return isSuccess;
     }
-    //setters
+
     public boolean setScar(int scar){
         boolean isSuccess = false;
         Random random = new Random();
@@ -49,7 +46,6 @@ public class Lion extends RoaringAnimal {
         return isSuccess;
     }
 
-    //getters
     public EFoodType getFoodtype(){
         MessageUtility.logGetter(this.getName(), "getFoodType", LION);
         return LION;

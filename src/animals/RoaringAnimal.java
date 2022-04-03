@@ -7,8 +7,10 @@ import utilities.MessageUtility;
 public abstract class RoaringAnimal  extends Animal
 {
 
-    public RoaringAnimal(String name, Point location) {
+    public RoaringAnimal(String name, Point location)
+    {
         super(name, location);
+        MessageUtility.logConstractor(getClass().getSimpleName(), name);
     }
 
     public abstract void roar();
