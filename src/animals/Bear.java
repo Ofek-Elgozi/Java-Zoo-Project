@@ -17,7 +17,8 @@ public class Bear extends RoaringAnimal {
     private static final String roar = "Stands on its hind legs, roars and scratches its belly";
     private String furColor;
 
-    private enum FurColors {
+    private enum FurColors
+    {
         WHITE("WHITE"),
         GRAY("GRAY"),
         BLACK("BLACK");
@@ -49,28 +50,35 @@ public class Bear extends RoaringAnimal {
         this.setDiet(new Omnivore());
     }
 
-    public boolean validFurColor(String furColor) {
+    public boolean validFurColor(String furColor)
+    {
         boolean isSuccess = false;
-        for (FurColors color : FurColors.values()) {
-            if (color.getFurcolorValue().equals(furColor)) {
+        for (FurColors color : FurColors.values())
+        {
+            if (color.getFurcolorValue().equals(furColor))
+            {
                 isSuccess = true;
             }
         }
         MessageUtility.logBooleanFunction(this.getName(),"validFurColor",furColor,isSuccess);
         return isSuccess;
     }
-    public void roar() {
+    public void roar()
+    {
         MessageUtility.logSound(this.getName(), roar);
     }
 
-    public boolean setFurColor(String furColor) {
+    public boolean setFurColor(String furColor)
+    {
         boolean isSuccess = false;
-        if(validFurColor(furColor)){
+        if(validFurColor(furColor))
+        {
             this.furColor = furColor;
             isSuccess = true;
         }
-        else {
-            this.furColor = DEFAULT_FURCOLOR;/////////////////////
+        else
+        {
+            this.furColor = DEFAULT_FURCOLOR;
         }
         MessageUtility.logSetter(this.getName(),"setFurColor",furColor,isSuccess);
         return isSuccess;

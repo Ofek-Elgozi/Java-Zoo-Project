@@ -8,14 +8,24 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * @
- * @
+ * A department that implements all the actions in the zoo, including a main executable file (main)
+ * @version 1.10 3 April 2022
+ * @author Ofek Elgozi
+ * @see Animal
  */
 
 public class ZooActions
 {
     private static Scanner sc = new Scanner(System.in);
 
+    /**
+     * A method that checks the type of object we received if it is an animal type does dawncusting from an object to an animal,
+     * and activates whether the "eat" function of the specific animal,
+     * if the animal was able to eat returns "true" if not returns "false"
+     * @param animal Describing a type of animal
+     * @param food that describes the type of food (EFoodType)
+     * @return if the animal was able to eat returns "true" if not returns "false"
+     */
     public static boolean eat(Object animal, IEdible food)
     {
         if (animal instanceof Animal)
@@ -25,6 +35,14 @@ public class ZooActions
         return false;
     }
 
+    /**
+     ** A method that checks the type of object we received if it is an animal type does dawncusting from an object to an animal ,
+     * If the point we got in the range (X between 0 and 800, Y between 0 and 600), returns "true" otherwise returns "false",
+     * and activates whether the "move" function of the specific animal
+     * @param animal Describing a type of animal
+     * @param point A point-type object that describes a location
+     * @return If the point we got in the range (X between 0 and 800, Y between 0 and 600), returns "true" otherwise returns "false"
+     */
     public static boolean move(Object animal, Point point)
     {
         if (animal instanceof Animal)
@@ -37,6 +55,10 @@ public class ZooActions
         return false;
     }
 
+    /**
+     * Main system execution program
+     * @param args Strings of commands
+     */
     public static void main(String[] args)
     {
 
@@ -80,6 +102,14 @@ public class ZooActions
         sc.close();
     }
 
+    /**
+     * A method that starts an array of the "animal" type,
+     * and accepts the size of the array (of an integer type),
+     * and in each cell in the array inserts an object that is a type of animal (lion, elephant, bear, etc ...),
+     * and returns the array it built
+     * @param size An integer that describes the size of the array we want to build
+     * @return An array of size (size) of "animal" initialized by the user
+     */
     private static Animal[] BuildArrayAnimals(int size)
     {
         int Selection;
@@ -98,7 +128,8 @@ public class ZooActions
             
             System.out.print("Enter your choice:");
             Selection = sc.nextInt();
-            while (Selection <= 0 || Selection > 6) {
+            while (Selection <= 0 || Selection > 6)
+            {
                 System.out.println("Invalid input, please Enter a number between 1-6");
                 System.out.print("Enter your choice: ");
                 Selection = sc.nextInt();
@@ -138,6 +169,14 @@ public class ZooActions
         return Animals_Array;
     }
 
+    /**
+     * A method that receives as parameters an array of the "animal" type, the name of the animal,
+     * and a place in the array (index).
+     * It adds to the array where we received as a parameter a new "elephant" object with the name we received as a parameter
+     * @param name A string of characters describing the name of the elephant (animal)
+     * @param Animals_Array "Animal" array
+     * @param i Position of any organ in the "animal" array we received
+     */
     private static void AddElephant(String name, Animal[] Animals_Array, int i) {
         int Selection;
         double trunkLength;
@@ -166,6 +205,14 @@ public class ZooActions
         } while (Selection != 1 && Selection != 2);
     }
 
+    /**
+     * A method that receives as parameters an array of the "animal" type, the name of the animal,
+     * and a place in the array (index).
+     * It adds to the array where we received as a parameter a new "Giraffe" object with the name we received as a parameter
+     * @param name A string of characters describing the name of the Giraffe (animal)
+     * @param Animals_Array "Animal" array
+     * @param i Position of any organ in the "animal" array we received
+     */
     private static void AddGiraffe(String name, Animal[] Animals_Array, int i) {
         Scanner sc = new Scanner(System.in);
         int Selection;
@@ -195,6 +242,14 @@ public class ZooActions
         } while (Selection != 1 && Selection != 2);
     }
 
+    /**
+     * A method that receives as parameters an array of the "animal" type, the name of the animal,
+     * and a place in the array (index).
+     * It adds to the array where we received as a parameter a new "Turtle" object with the name we received as a parameter
+     * @param name A string of characters describing the name of the Turtle (animal)
+     * @param Animals_Array "Animal" array
+     * @param i Position of any organ in the "animal" array we received
+     */
     private static void AddTurtle(String name, Animal[] Animals_Array, int i) {
         Scanner sc = new Scanner(System.in);
         int Selection;
@@ -224,6 +279,14 @@ public class ZooActions
         } while (Selection != 1 && Selection != 2);
     }
 
+    /**
+     * A method that receives as parameters an array of the "animal" type, the name of the animal,
+     * and a place in the array (index).
+     * It adds to the array where we received as a parameter a new "Bear" object with the name we received as a parameter
+     * @param name A string of characters describing the name of the Bear (animal)
+     * @param Animals_Array "Animal" array
+     * @param i Position of any organ in the "animal" array we received
+     */
     private static void AddBear(String name, Animal[] Animals_Array, int i) {
         Scanner sc = new Scanner(System.in);
         int Selection;
