@@ -220,7 +220,7 @@ public class ZooActions {
         System.out.println("1. White");
         System.out.println("2. Gray");
         System.out.println("3. Black");
-        System.out.println("4. default");
+        System.out.println("4. Default");
 
         do {
             System.out.print("Enter your choice: ");
@@ -236,7 +236,7 @@ public class ZooActions {
                     break;
                 case 3:
                     //Black
-                    Animals_Array[i] = new Bear(name, "GRAY");
+                    Animals_Array[i] = new Bear(name, "BLACK");//TODO
                     break;
                 case 4:
                     //default
