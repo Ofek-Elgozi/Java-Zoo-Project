@@ -6,6 +6,7 @@ import mobility.Point;
 import utilities.MessageUtility;
 
 public class Turtle extends ChewingAnimals {
+    //elyasaf
 
     private static final double STARTING_WEIGHT = 1;
     private static final Point STARTING_POSITION = new Point(80,0);
