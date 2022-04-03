@@ -27,7 +27,6 @@ public class Turtle extends ChewingAnimals {
 
     public Turtle(String name,int age){
         super(name, STARTING_POSITION);
-        MessageUtility.logConstractor("Turtle", this.getName());
         this.setWeight(STARTING_WEIGHT);
         this.setAge(age);
         this.setDiet(new Herbivore());

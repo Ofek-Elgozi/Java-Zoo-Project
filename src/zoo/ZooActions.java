@@ -3,7 +3,6 @@ package zoo;
 import animals.*;
 import food.IEdible;
 import mobility.Point;
-import utilities.MessageUtility;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -20,41 +19,48 @@ public class ZooActions {
         return false;
     }
 
-    public static boolean move(Object animal, Point point) {
-        boolean isSuccess = false;
-        System.out.println("Please enter x and y coordinates");
-        System.out.println("X: ");
-        point.setX(sc.nextInt());
-        System.out.println("Y: ");
-        point.setY(sc.nextInt());
-        while (((Animal) animal).move(point) == 0) {
-            System.out.println("Invalid coordinates, Please enter x and y coordinates again.");
-            System.out.println("X: ");
-            point.setX(sc.nextInt());
-            System.out.println("Y: ");
-            point.setY(sc.nextInt());
+    public static boolean move(Object animal, Point point)
+    {
+        if (((Animal)animal).move(point) != 0)
+        {
+            return true;
         }
-        if (((Animal) animal).move(point) != 0) {
-            isSuccess = true;
-        }
-        return isSuccess;
+        return false;
     }
 
     public static void main(String[] args) {
 
         int size;
+        int x;
+        int y;
         Animal[] Animals_Array;
-        Point TempLocation = new Point(5, 10);
+        //
         System.out.println("How Many Animals There Are In The Zoo?:");
         size = sc.nextInt();
         while (size < 3) {
             System.out.println("Invalid input, The minimum size is 3.");
             size = sc.nextInt();
         }
+        //
         Animals_Array = BuildArrayAnimals(size);
-        for (int i = 0; i < size; i++) {
-            move(Animals_Array[i], TempLocation);
+        //
+        for (int i = 0; i < size; i++)
+        {
+            System.out.println("Please Enter Location Of X:");
+            x = sc.nextInt();
+            System.out.println("Please Enter Location Of Y:");
+            y = sc.nextInt();
+            while(Point.checkBoundaries(new Point(x,y)) == false)
+            {
+                System.out.println("Invalid Input, Please Try Again.");
+                System.out.println("Please Enter Location Of X:");
+                x = sc.nextInt();
+                System.out.println("Please Enter Location Of Y:");
+                y = sc.nextInt();
+            }
+            move(Animals_Array[i], new Point(x,y));
         }
+        //
         int NewSize = size / 2;
         Random random = new Random();
         for (int i = 0; i < NewSize; i++) {

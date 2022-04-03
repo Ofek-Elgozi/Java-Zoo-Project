@@ -26,7 +26,6 @@ public class Giraffe extends ChewingAnimals {
 
     public Giraffe(String name, double neckLength){
         super(name,STARTING_POSITION);
-        MessageUtility.logConstractor("Giraffe", this.getName());
         this.setWeight(STARTING_WEIGHT);
         this.setNeckLength(neckLength);
         this.setDiet(new Herbivore());

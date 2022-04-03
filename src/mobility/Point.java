@@ -26,7 +26,8 @@ public class Point
         return false;
     }
 
-    public boolean setY(int y) {
+    public boolean setY(int y)
+    {
         if(y >= 0 && y <= Max_y)
         {
             this.y = y;
@@ -55,6 +56,6 @@ public class Point
     public int getY(){return this.y;}
 
     public String toString() {
-        return "(" + this.getX() + "," + this.getY() + ") " ;
+        return "(" + this.getX() + "," + this.getY() + ")" ;
     }
 }
