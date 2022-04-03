@@ -8,24 +8,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
-<<<<<<< Updated upstream
  * @
  * @
  */
+
 public class ZooActions
 {
-=======
- * An easy interface to read numbers and strings from
- * standard input
- *
- * @version 1.10 2 april 2022
- * @author  ofek elgozi
- * @see     Mobile
- */
-
-
-public class ZooActions {
->>>>>>> Stashed changes
     private static Scanner sc = new Scanner(System.in);
 
     public static boolean eat(Object animal, IEdible food)
