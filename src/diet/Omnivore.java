@@ -5,8 +5,19 @@ import food.EFoodType;
 import food.IEdible;
 import utilities.MessageUtility;
 
+/**
+ * A class that defines animals that eat anything. Implementing the IDiot interface.
+ * @version 1.10 28 March 2022
+ * @author Ofek Elgozi
+ * @
+ */
 public class Omnivore extends Carnivore implements IDiet
 {
+    /**
+     * A method that accepts a type of food, returns true if it is of the "vegetarian" type or "meat" otherwise returns "false"
+     * @param food that describes the type of food (EFoodType)
+     * @return returns true if it is of the "vegetarian" type or "meat" otherwise returns "false"
+     */
     @Override
     public boolean canEat(EFoodType food)
     {
@@ -19,6 +30,15 @@ public class Omnivore extends Carnivore implements IDiet
         return isSuccess;
     }
 
+    /**
+     * A method that accepts as an animal type and food type parameters,
+     * if the animal can eat the food the function returns the weight gained by the animal as a result of eating
+     * otherwise returns 0
+     * @param animal Describing a type of animal
+     * @param food that describes the type of food (EFoodType)
+     * @return returns the weight gained by the animal as a result of eating
+     * otherwise returns 0
+     */
     @Override
     public double eat(Animal animal, IEdible food)
     {
@@ -33,6 +53,9 @@ public class Omnivore extends Carnivore implements IDiet
         }
         return 0;
     }
-
+    /**
+     * A method that returns the class type as a string
+     * @return returns the class type as a string
+     */
     public String toString() {return "[Omnivore]";}
 }
