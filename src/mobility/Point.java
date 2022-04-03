@@ -1,5 +1,6 @@
 package mobility;
 
+import food.EFoodType;
 import utilities.MessageUtility;
 
 public class Point
@@ -13,6 +14,25 @@ public class Point
     {
         this.x = x;
         this.y = y;
+    }
+
+    public boolean setX(int x)
+    {
+        if(x >= 0 && x <= Max_x)
+        {
+            this.x = x;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean setY(int y) {
+        if(y >= 0 && y <= Max_y)
+        {
+            this.y = y;
+            return true;
+        }
+        return false;
     }
 
     public Point(Point other)

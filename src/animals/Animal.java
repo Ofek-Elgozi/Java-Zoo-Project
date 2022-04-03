@@ -18,12 +18,14 @@ public abstract class Animal extends Mobile implements IEdible {
         MessageUtility.logConstractor("Animal",name);
         this.setName(name);
     }
-    //abstract method
+
+
     public abstract void makeSound();
     public abstract EFoodType getFoodtype();
 
-    //API
-    public boolean eat(IEdible food){
+
+    public boolean eat(IEdible food)
+    {
         boolean isSuccess = false;
         double weightGain = diet.eat( this, food);
         if(weightGain > 0){
@@ -35,12 +37,13 @@ public abstract class Animal extends Mobile implements IEdible {
         System.out.println();
         return isSuccess;
     }
-    public double move(Point nextLocation) {
+
+    public double move(Point nextLocation)
+    {
         double distance =  super.move(nextLocation);
         if (distance != 0) {
             this.setWeight(getWeight() - (distance * getWeight() * 0.00025));
             MessageUtility.logSetter(this.getName(),"move",nextLocation,true);
-
         }
         else {
             MessageUtility.logSetter(this.getName(), "move", nextLocation, false);

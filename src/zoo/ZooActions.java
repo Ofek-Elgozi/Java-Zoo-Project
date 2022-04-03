@@ -3,16 +3,18 @@ package zoo;
 import animals.*;
 import food.IEdible;
 import mobility.Point;
+import utilities.MessageUtility;
 
 import java.util.Random;
 import java.util.Scanner;
 
+//ofek
 public class ZooActions {
     private static final int MIN_NUM_OF_ANIMALS = 3;
     private static Scanner sc = new Scanner(System.in);
 
     public static boolean eat(Object animal, IEdible food) {
-        if(animal instanceof  Animal) {
+        if (animal instanceof Animal) {
             return ((Animal) animal).eat(food);
         }
         return false;
@@ -20,7 +22,19 @@ public class ZooActions {
 
     public static boolean move(Object animal, Point point) {
         boolean isSuccess = false;
-        if (((Animal)animal).move(point) != 0) {
+        System.out.println("Please enter x and y coordinates");
+        System.out.println("X: ");
+        point.setX(sc.nextInt());
+        System.out.println("Y: ");
+        point.setY(sc.nextInt());
+        while (((Animal) animal).move(point) == 0) {
+            System.out.println("Invalid coordinates, Please enter x and y coordinates again.");
+            System.out.println("X: ");
+            point.setX(sc.nextInt());
+            System.out.println("Y: ");
+            point.setY(sc.nextInt());
+        }
+        if (((Animal) animal).move(point) != 0) {
             isSuccess = true;
         }
         return isSuccess;
@@ -28,184 +42,175 @@ public class ZooActions {
 
     public static void main(String[] args) {
 
-        int size ;
-        Animal[] animalsArr;
-        Point location = new Point(5, 10);
-
-            System.out.println("Please enter the number of animals in the zoo (At least 3 animals): ");
+        int size;
+        Animal[] Animals_Array;
+        Point TempLocation = new Point(5, 10);
+        System.out.println("How Many Animals There Are In The Zoo?:");
+        size = sc.nextInt();
+        while (size < 3) {
+            System.out.println("Invalid input, The minimum size is 3.");
             size = sc.nextInt();
-            while (size < 3) {
-                System.out.println("Invalid input, The minimum size is 3 ");
-                size = sc.nextInt();
-            }
-
-        animalsArr = createAnimalsArr(size);
-
-        for(int i =0 ; i < size ; i++)
-        {
-            move(animalsArr[i],location);
         }
-
-        int raffle = size/2;
+        Animals_Array = BuildArrayAnimals(size);
+        for (int i = 0; i < size; i++) {
+            move(Animals_Array[i], TempLocation);
+        }
+        int NewSize = size / 2;
         Random random = new Random();
-        for (int i = 0; i < raffle; i++){
-            int first = random.nextInt(size);
-            int second = random.nextInt(size);
-            ZooActions.eat(animalsArr[first], animalsArr[second]);
+        for (int i = 0; i < NewSize; i++) {
+            int FirstAnimal = random.nextInt(size);
+            int SecondAnimal = random.nextInt(size);
+            ZooActions.eat(Animals_Array[FirstAnimal], Animals_Array[SecondAnimal]);
         }
         sc.close();
     }
-    private static Animal[] createAnimalsArr(int size) {
-        int userSelection ;
-        Animal[] animalsArr = new Animal[size];
 
-        for (int i = 0; i < size; i++) {
-            System.out.println("\nAnimal number " + (i + 1) );
-            System.out.println("Select the animal you want to add: " );
+    private static Animal[] BuildArrayAnimals(int size) {
+        int Selection;
+        Animal[] Animals_Array = new Animal[size];
+
+        for (int i = 0; i < size; i++) 
+        {
+            System.out.println("\nAnimal number " + (i + 1));
+            System.out.println("Which Animal You Want To Add?:");
             System.out.println("1. Lion");
             System.out.println("2. Bear");
             System.out.println("3. Elephant");
             System.out.println("4. Giraffe");
             System.out.println("5. Turtle");
             System.out.println("6. Exit");
-
-
+            
+            System.out.print("Enter your choice:");
+            Selection = sc.nextInt();
+            while (Selection <= 0 || Selection > 6) {
+                System.out.println("Invalid input, please Enter a number between 1-6");
                 System.out.print("Enter your choice: ");
-                userSelection = sc.nextInt();
-             while (userSelection <= 0 || userSelection > 6) {
-                 System.out.println("Invalid input, please Enter a number between 1-6");
-                 System.out.print("Enter your choice: ");
-                 userSelection = sc.nextInt();
-             }
-
-
-            System.out.println("Please enter the animal's name: ");
-            String name = sc.next();
-                switch (userSelection) {
-                    case 1:
-                        //Lion
-                        animalsArr[i] = new Lion(name);
-                        break;
-                    case 2:
-                        //Bear
-                        createBear(name,animalsArr,i);
-                        break;
-                    case 3:
-                        //Elephant
-                        createElephant(name,animalsArr,i);
-                        break;
-                    case 4:
-                        //Giraffe
-                        createGiraffe(name,animalsArr,i);
-                        break;
-                    case 5:
-                        //Turtle
-                        createTurtle(name,animalsArr,i);
-                        break;
-                    case 6:
-                        // Terminate JVM
-                        System.exit(0);
-                        break;
-                    default:
-                        //invalid input
-                        break;
-                }
+                Selection = sc.nextInt();
             }
-        return animalsArr;
+            System.out.println("Please Enter The Name Of The Animal:");
+            String name = sc.next();
+            switch (Selection) {
+                case 1:
+                    //Lion
+                    Animals_Array[i] = new Lion(name);
+                    break;
+                case 2:
+                    //Bear
+                    AddBear(name, Animals_Array, i);
+                    break;
+                case 3:
+                    //Elephant
+                    AddElephant(name, Animals_Array, i);
+                    break;
+                case 4:
+                    //Giraffe
+                    AddGiraffe(name, Animals_Array, i);
+                    break;
+                case 5:
+                    //Turtle
+                    AddTurtle(name, Animals_Array, i);
+                    break;
+                case 6:
+                    // Terminate JVM
+                    System.exit(0);
+                    break;
+                default:
+                    //invalid input
+                    break;
+            }
+        }
+        return Animals_Array;
     }
 
-    private static void createElephant(String name, Animal[] animalsArr, int i)
-    {
-        int userSelection;
+    private static void AddElephant(String name, Animal[] Animals_Array, int i) {
+        int Selection;
         double trunkLength;
-        System.out.println("Do you want to choose a specific length for the elephant trunk?: ");
+        System.out.println("Do you want to choose a specific length for the elephant trunk?:");
         System.out.println("1. YES");
         System.out.println("2. NO");
         do {
             System.out.print("Enter your choice: ");
-            userSelection = sc.nextInt();
-            switch (userSelection) {
+            Selection = sc.nextInt();
+            switch (Selection) {
                 case 1:
                     //YES
-                    System.out.print("Enter length of the trunk (a real number between 0.5 - 3) : ");
+                    System.out.print("Enter length of the trunk (Number Between 0.5 To 3):");
                     trunkLength = sc.nextDouble();
-                    animalsArr[i] = new Elephant(name,trunkLength);
+                    Animals_Array[i] = new Elephant(name, trunkLength);
                     break;
                 case 2:
                     //NO
-                    animalsArr[i] = new Elephant(name);
+                    Animals_Array[i] = new Elephant(name);
                     break;
                 default:
                     //invalid input
                     System.out.println("Invalid input, please Enter 1 or 2");
                     break;
             }
-        } while (userSelection != 1 && userSelection != 2);
+        } while (Selection != 1 && Selection != 2);
     }
 
-    private static void createGiraffe(String name, Animal[] animalsArr, int i)
-    {
+    private static void AddGiraffe(String name, Animal[] Animals_Array, int i) {
         Scanner sc = new Scanner(System.in);
-        int userSelection;
+        int Selection;
         double neckLength;
         System.out.println("Do you want to choose a specific length for the giraffe's neck? : ");
         System.out.println("1. YES");
         System.out.println("2. NO");
         do {
             System.out.print("Enter your choice: ");
-            userSelection = sc.nextInt();
-            switch (userSelection) {
+            Selection = sc.nextInt();
+            switch (Selection) {
                 case 1:
                     //YES
                     System.out.print("Enter length of the neck (a real number between 1 - 2.5) : ");
                     neckLength = sc.nextDouble();//TODO check if we need to validate this input
-                    animalsArr[i] = new Giraffe(name,neckLength);
+                    Animals_Array[i] = new Giraffe(name, neckLength);
                     break;
                 case 2:
                     //NO
-                    animalsArr[i] = new Giraffe(name);
+                    Animals_Array[i] = new Giraffe(name);
                     break;
                 default:
                     //invalid input
                     System.out.println("Invalid input, please Enter 1 or 2");
                     break;
             }
-        } while (userSelection != 1 && userSelection != 2);
+        } while (Selection != 1 && Selection != 2);
     }
 
-    private static void createTurtle(String name, Animal[] animalsArr, int i) {
+    private static void AddTurtle(String name, Animal[] Animals_Array, int i) {
         Scanner sc = new Scanner(System.in);
-        int userSelection;
+        int Selection;
         int age;
         System.out.println("Do you want to choose a specific age for the Turtle?: ");
         System.out.println("1. YES");
         System.out.println("2. NO");
         do {
             System.out.print("Enter your choice: ");
-            userSelection = sc.nextInt();
-            switch (userSelection) {
+            Selection = sc.nextInt();
+            switch (Selection) {
                 case 1:
                     //YES
                     System.out.print("Enter the age (a integer number between 0 - 500) : ");
                     age = sc.nextInt();//TODO check if we need to validate this input
-                    animalsArr[i] = new Turtle(name,age);
+                    Animals_Array[i] = new Turtle(name, age);
                     break;
                 case 2:
                     //NO
-                    animalsArr[i] = new Turtle(name);
+                    Animals_Array[i] = new Turtle(name);
                     break;
                 default:
                     //invalid input
                     System.out.println("Invalid input, please Enter 1 or 2");
                     break;
             }
-        } while (userSelection != 1 && userSelection != 2);
+        } while (Selection != 1 && Selection != 2);
     }
 
-
-    private static void createBear(String name, Animal[] animalsArr, int i) {
+    private static void AddBear(String name, Animal[] Animals_Array, int i) {
         Scanner sc = new Scanner(System.in);
-        int userSelection;
+        int Selection;
 
         System.out.println("Please select the bear's fur color: ");
         System.out.println("1. White");
@@ -215,30 +220,30 @@ public class ZooActions {
 
         do {
             System.out.print("Enter your choice: ");
-            userSelection = sc.nextInt();
-            switch (userSelection) {
+            Selection = sc.nextInt();
+            switch (Selection) {
                 case 1:
                     //White
-                    animalsArr[i] = new Bear(name,"WHITE");
+                    Animals_Array[i] = new Bear(name, "WHITE");
                     break;
                 case 2:
                     //Gray
-                    animalsArr[i] = new Bear(name,"GRAY");
+                    Animals_Array[i] = new Bear(name, "GRAY");
                     break;
                 case 3:
                     //Black
-                    animalsArr[i] = new Bear(name,"GRAY");
+                    Animals_Array[i] = new Bear(name, "GRAY");
                     break;
                 case 4:
                     //default
-                    animalsArr[i] = new Bear(name);
+                    Animals_Array[i] = new Bear(name);
                     break;
                 default:
                     System.out.println("Invalid input, please try again.");
                     break;
             }
         }
-        while(userSelection < 1 || userSelection > 4 );
+        while (Selection < 1 || Selection > 4);
     }
 
 }

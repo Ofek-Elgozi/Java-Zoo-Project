@@ -40,13 +40,7 @@ public class Bear extends RoaringAnimal {
         this.setFurColor(DEFAULT_FURCOLOR);
         this.setDiet(new Omnivore());
     }
-    public Bear(String name, Point location) {
-        super(name, location);
-        MessageUtility.logConstractor("Bear", this.getName());
-        this.setWeight(STARTING_WEIGHT);
-        this.setFurColor(DEFAULT_FURCOLOR);
-        this.setDiet(new Omnivore());
-    }
+
     public Bear(String name, String furColor) {
         super(name, STARTING_POSITION);
         MessageUtility.logConstractor("Bear", this.getName());

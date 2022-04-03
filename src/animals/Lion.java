@@ -23,12 +23,6 @@ public class Lion extends RoaringAnimal {
         this.setWeight(STARTING_WEIGHT);
         this.setDiet(new Carnivore());
     }
-    public Lion(String name,Point location){
-        super(name,location);
-        MessageUtility.logConstractor("Lion", this.getName());
-        this.setWeight(STARTING_WEIGHT);
-        this.setDiet(new Carnivore());
-    }
 
     //API
     public void roar(){

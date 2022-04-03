@@ -24,13 +24,7 @@ public class Turtle extends ChewingAnimals {
         this.setAge(DEFAULT_AGE);
         this.setDiet(new Herbivore());
     }
-    public Turtle(String name,Point location){
-        super(name,location);
-        MessageUtility.logConstractor("Turtle", this.getName());
-        this.setWeight(STARTING_WEIGHT);
-        this.setAge(DEFAULT_AGE);
-        this.setDiet(new Herbivore());
-    }
+
     public Turtle(String name,int age){
         super(name, STARTING_POSITION);
         MessageUtility.logConstractor("Turtle", this.getName());

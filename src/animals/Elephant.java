@@ -13,28 +13,22 @@ public class Elephant extends ChewingAnimals {
     private static final double MAX_TRUNK_LENGTH = 3;
     private static final double DEFAULT_TRUNK_LENGTH = 1;
     private static final String chew = "Trumpets with joy while flapping its ears, then chews";
-
-    private double trunkLength;
+    private double TrunkLength;
+    
     //constructors
     public Elephant(String name){
         super(name,STARTING_POSITION);
         MessageUtility.logConstractor("Elephant", this.getName());
         this.setWeight(STARTING_WEIGHT);
-        this.settrunkLength(DEFAULT_TRUNK_LENGTH);
+        this.setTrunkLength(DEFAULT_TRUNK_LENGTH);
         this.setDiet(new Herbivore());
     }
-    public Elephant(String name, Point location){
-        super(name,location);
-        MessageUtility.logConstractor("Elephant", this.getName());
-        this.setWeight(STARTING_WEIGHT);
-        this.settrunkLength(DEFAULT_TRUNK_LENGTH);
-        this.setDiet(new Herbivore());
-    }
-    public Elephant(String name,double trunkLength){
+
+    public Elephant(String name,double TrunkLength){
         super(name,STARTING_POSITION);
         MessageUtility.logConstractor("Elephant", this.getName());
         this.setWeight(STARTING_WEIGHT);
-        this.settrunkLength(trunkLength);
+        this.setTrunkLength(TrunkLength);
         this.setDiet(new Herbivore());
     }
 
@@ -43,13 +37,13 @@ public class Elephant extends ChewingAnimals {
         MessageUtility.logSound(this.getName(),chew);
     }
     //setters
-    public boolean settrunkLength(double trunkLength){
+    public boolean setTrunkLength(double TrunkLength){
         boolean isSuccess = false;
-        if(trunkLength > MIN_TRUNK_LENGTH && trunkLength < MAX_TRUNK_LENGTH){
-            this.trunkLength = trunkLength;
+        if(TrunkLength > MIN_TRUNK_LENGTH && TrunkLength < MAX_TRUNK_LENGTH){
+            this.TrunkLength = TrunkLength;
             isSuccess = true;
         }
-        MessageUtility.logSetter(this.getName(),"settrunkLength",trunkLength,isSuccess);
+        MessageUtility.logSetter(this.getName(),"setTrunkLength",TrunkLength,isSuccess);
         return isSuccess;
     }
 
