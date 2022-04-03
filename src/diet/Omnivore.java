@@ -22,11 +22,12 @@ public class Omnivore extends Carnivore implements IDiet
     @Override
     public double eat(Animal animal, IEdible food)
     {
-        if(canEat(food.getFoodtype()) == true && food.getFoodtype() == EFoodType.MEAT)
+        EFoodType Temp_Food = food.getFoodtype();
+        if(canEat(Temp_Food) == true && Temp_Food == EFoodType.MEAT)
         {
             return super.eat(animal, food);
         }
-        else if(canEat(food.getFoodtype()) == true && food.getFoodtype() == EFoodType.VEGETABLE)
+        else if(canEat(Temp_Food) == true && Temp_Food == EFoodType.VEGETABLE)
         {
             return (animal.getWeight()*0.07);
         }

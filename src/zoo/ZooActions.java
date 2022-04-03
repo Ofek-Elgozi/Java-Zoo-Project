@@ -7,9 +7,8 @@ import mobility.Point;
 import java.util.Random;
 import java.util.Scanner;
 
-//ofek
+
 public class ZooActions {
-    private static final int MIN_NUM_OF_ANIMALS = 3;
     private static Scanner sc = new Scanner(System.in);
 
     public static boolean eat(Object animal, IEdible food) {
@@ -50,7 +49,7 @@ public class ZooActions {
             x = sc.nextInt();
             System.out.println("Please Enter Location Of Y:");
             y = sc.nextInt();
-            while(Point.checkBoundaries(new Point(x,y)) == false)
+            while(move(Animals_Array[i], new Point(x,y)) == false)
             {
                 System.out.println("Invalid Input, Please Try Again.");
                 System.out.println("Please Enter Location Of X:");
@@ -58,7 +57,6 @@ public class ZooActions {
                 System.out.println("Please Enter Location Of Y:");
                 y = sc.nextInt();
             }
-            move(Animals_Array[i], new Point(x,y));
         }
         //
         int NewSize = size / 2;

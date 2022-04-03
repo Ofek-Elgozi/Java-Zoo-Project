@@ -40,9 +40,12 @@ public abstract class Animal extends Mobile implements IEdible {
 
     public double move(Point nextLocation)
     {
+        double PresentWeight;
         double distance =  super.move(nextLocation);
-        if (distance != 0) {
-            this.setWeight(getWeight() - (distance * getWeight() * 0.00025));
+        if (distance != 0)
+        {
+            PresentWeight = getWeight();
+            this.setWeight(PresentWeight - (distance * PresentWeight * 0.00025));
             MessageUtility.logSetter(this.getName(),"move",nextLocation,true);
         }
         else {
