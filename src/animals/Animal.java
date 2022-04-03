@@ -99,23 +99,23 @@ public abstract class Animal extends Mobile implements IEdible {
 
         if(this instanceof Lion)
         {
-            return "[Lion]"+this.name;
+            return "[Lion] "+this.name;
         }
         if(this instanceof Turtle)
         {
-            return "[Turtle]"+this.name;
+            return "[Turtle] "+this.name;
         }
         if(this instanceof Elephant)
         {
-            return "[Elephant]"+this.name;
+            return "[Elephant] "+this.name;
         }
         if(this instanceof Giraffe)
         {
-            return "[Giraffe]"+this.name;
+            return "[Giraffe] "+this.name;
         }
         if(this instanceof Bear)
         {
-            return "[Bear]"+this.name;
+            return "[Bear] "+this.name;
         }
         else return "Animal";
     }
