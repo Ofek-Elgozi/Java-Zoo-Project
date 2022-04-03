@@ -21,6 +21,7 @@ public class Elephant extends ChewingAnimals {
         this.setWeight(STARTING_WEIGHT);
         this.setTrunkLength(DEFAULT_TRUNK_LENGTH);
         this.setDiet(new Herbivore());
+        MessageUtility.logConstractor("Elephant", this.getName());
     }
 
     public Elephant(String name,double TrunkLength)
@@ -29,6 +30,7 @@ public class Elephant extends ChewingAnimals {
         this.setWeight(STARTING_WEIGHT);
         this.setTrunkLength(TrunkLength);
         this.setDiet(new Herbivore());
+        MessageUtility.logConstractor("Elephant", this.getName());
     }
 
     public void chew(){
