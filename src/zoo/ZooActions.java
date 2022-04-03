@@ -7,41 +7,31 @@ import mobility.Point;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * @
+ * @
+ */
 public class ZooActions
 {
     private static Scanner sc = new Scanner(System.in);
 
     public static boolean eat(Object animal, IEdible food)
     {
-        if (animal instanceof Lion)//Lion
+        if (animal instanceof Animal)
         {
-            return ((Lion) animal).eat(food);
-        }
-        else if(animal instanceof Elephant)//Elephant
-        {
-            return ((Elephant) animal).eat(food);
-        }
-        else if(animal instanceof Giraffe)//Giraffe
-        {
-            return ((Giraffe) animal).eat(food);
-        }
-        else if(animal instanceof Bear)//Bear
-        {
-            return ((Bear) animal).eat(food);
-        }
-        else if(animal instanceof Turtle)//Turtle
-        {
-            return ((Turtle) animal).eat(food);
+            return ((Animal) animal).eat(food);
         }
         return false;
     }
 
     public static boolean move(Object animal, Point point)
     {
-        if (((Animal)animal).move(point) != 0)
+        if (animal instanceof Animal)
         {
-            return true;
+            if (((Animal)animal).move(point) != 0)
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -107,8 +97,7 @@ public class ZooActions
             
             System.out.print("Enter your choice:");
             Selection = sc.nextInt();
-            while (Selection <= 0 || Selection > 6)
-            {
+            while (Selection <= 0 || Selection > 6) {
                 System.out.println("Invalid input, please Enter a number between 1-6");
                 System.out.print("Enter your choice: ");
                 Selection = sc.nextInt();
