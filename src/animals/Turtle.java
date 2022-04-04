@@ -4,7 +4,12 @@ import diet.Herbivore;
 import food.EFoodType;
 import mobility.Point;
 import utilities.MessageUtility;
-
+/**
+ * A class describing a "turtle" type animal describes the bear's voices and general behavior
+ * @version 1.10 3 April 2022
+ * @author Elyasaf Sinvani
+ * @see Giraffe
+ */
 public class Turtle extends ChewingAnimals
 {
     private static final double STARTING_WEIGHT = 1;
@@ -16,6 +21,12 @@ public class Turtle extends ChewingAnimals
 
     private int age;
 
+    /**
+     * The weight builder that receives the turtle name (string type) as a parameter,
+     * updates the turtle name to be the parameter we received, updates the turtle age to be the default value (one year old),
+     * and updates all other parameters according to the constants of creating a new turtle object
+     * @param name A string describing the name of the turtle
+     */
     public Turtle(String name)
     {
         super(name, STARTING_POSITION);
@@ -24,6 +35,13 @@ public class Turtle extends ChewingAnimals
         this.setDiet(new Herbivore());
     }
 
+    /**
+     *Another class builder that gets the turtle name as a string and the age of the turtle as an integer,
+     *  updates the turtle name and age to the values it received in parameters,
+     *  and updates the rest of the fields according to the fixed values of each turtle object creation
+     * @param name A string describing the name of the turtle
+     * @param age A integer describing the age of the turtle
+     */
     public Turtle(String name,int age)
     {
         super(name, STARTING_POSITION);
@@ -31,11 +49,20 @@ public class Turtle extends ChewingAnimals
         this.setAge(age);
         this.setDiet(new Herbivore());
     }
-
+    /**
+     * A method that prints the sound the turtle makes while eating
+     */
     public void chew(){
         MessageUtility.logSound(this.getName(),chew);
     }
 
+    /**
+     * A Boolean method that accepts the turtle as an integer checks if it is valid (between 0 and 500)
+     * then updates the current turtle age to the age it received as a parameter and returns "true",
+     * otherwise returns "false" and does not change the current turtle age
+     * @param age A integer describing the age of the turtle
+     * @return If the age is valid (between 0 and 500) "true" will be returned, otherwise "false" will be returned
+     */
     public boolean setAge(int age)
     {
         boolean isSuccess = false;
