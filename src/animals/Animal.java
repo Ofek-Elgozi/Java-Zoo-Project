@@ -7,6 +7,10 @@ import mobility.Point;
 import food.IEdible;
 import utilities.MessageUtility;
 
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
+
 /**
  * An abstract class that defines the characteristics common to all animals. The department is expanding
  * Mobile and implements IEdible

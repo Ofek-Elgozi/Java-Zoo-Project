@@ -6,6 +6,9 @@ import mobility.Point;
 
 import java.util.Random;
 import java.util.Scanner;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  * A department that implements all the actions in the zoo, including a main executable file (main)

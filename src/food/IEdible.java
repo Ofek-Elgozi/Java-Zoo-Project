@@ -1,4 +1,7 @@
 package food;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  *Interface describing objects that can be eaten

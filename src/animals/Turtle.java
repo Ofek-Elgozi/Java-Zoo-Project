@@ -4,6 +4,10 @@ import diet.Herbivore;
 import food.EFoodType;
 import mobility.Point;
 import utilities.MessageUtility;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
+
 /**
  * A class describing a "turtle" type animal describes the bear's voices and general behavior
  * @version 1.10 3 April 2022
