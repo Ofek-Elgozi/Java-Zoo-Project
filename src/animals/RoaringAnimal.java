@@ -12,12 +12,15 @@ import utilities.MessageUtility;
  */
 public abstract class RoaringAnimal  extends Animal
 {
+<<<<<<< Updated upstream
     /**
      * The class constructor, which receives as parameters the name of the animal (type of string) and its position (point type),
      * and initializes to be the name of the object to be the name it received and the position to be the position it received
      * @param name A string-type object that describes the name of the animal
      * @param location A point-type object that describes the position of the animal in space
      */
+=======
+>>>>>>> Stashed changes
     public RoaringAnimal(String name, Point location)
     {
         super(name, location);
