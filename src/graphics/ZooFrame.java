@@ -107,7 +107,7 @@ public class ZooFrame extends JFrame
                 frame.repaint();
             }
         });
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setVisible(true);
     }
 }
