@@ -15,8 +15,8 @@ import java.awt.*;
  * @author Ofek Elgozi
  * @see Bear
  */
-public class Elephant extends ChewingAnimals {
-
+public class Elephant extends ChewingAnimals
+{
 
     private static final double STARTING_WEIGHT = 500;
     private static final Point STARTING_POSITION = new Point(50,90);
