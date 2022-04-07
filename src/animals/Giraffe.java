@@ -4,6 +4,8 @@ package animals;
 import diet.Herbivore;
 import mobility.Point;
 import utilities.MessageUtility;
+
+import java.awt.*;
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
 //Campus Ashdod
@@ -75,5 +77,50 @@ public class Giraffe extends ChewingAnimals {
         }
         MessageUtility.logSetter(this.getName(),"setNeckLength",neckLength,isSuccess);
         return isSuccess;
+    }
+
+    @Override
+    public String getAnimalName() {
+        return null;
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
+    }
+
+    @Override
+    public void eatInc() {
+
+    }
+
+    @Override
+    public int getEatCount() {
+        return 0;
+    }
+
+    @Override
+    public boolean getChanges() {
+        return false;
+    }
+
+    @Override
+    public void setChanges(boolean state) {
+
+    }
+
+    @Override
+    public void loadImages(String nm) {
+
+    }
+
+    @Override
+    public void drawObject(Graphics g) {
+
+    }
+
+    @Override
+    public String getColor() {
+        return null;
     }
 }

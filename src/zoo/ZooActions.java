@@ -59,53 +59,6 @@ public class ZooActions
     }
 
     /**
-     * Main system execution program
-     * @param args Strings of commands
-     */
-    public static void main(String[] args)
-    {
-
-        int size;
-        int x;
-        int y;
-        Animal[] Animals_Array;
-        //
-        System.out.println("How Many Animals There Are In The Zoo?:");
-        size = sc.nextInt();
-        while (size < 3) {
-            System.out.println("Invalid input, The minimum size is 3.");
-            size = sc.nextInt();
-        }
-        //
-        Animals_Array = BuildArrayAnimals(size);
-        //
-        for (int i = 0; i < size; i++)
-        {
-            System.out.println("Please Enter Location Of X:");
-            x = sc.nextInt();
-            System.out.println("Please Enter Location Of Y:");
-            y = sc.nextInt();
-            while(move(Animals_Array[i], new Point(x,y)) == false)
-            {
-                System.out.println("Invalid Input, Please Try Again.");
-                System.out.println("Please Enter Location Of X:");
-                x = sc.nextInt();
-                System.out.println("Please Enter Location Of Y:");
-                y = sc.nextInt();
-            }
-        }
-        //
-        int NewSize = size / 2;
-        Random random = new Random();
-        for (int i = 0; i < NewSize; i++) {
-            int FirstAnimal = random.nextInt(size);
-            int SecondAnimal = random.nextInt(size);
-            ZooActions.eat(Animals_Array[FirstAnimal], Animals_Array[SecondAnimal]);
-        }
-        sc.close();
-    }
-
-    /**
      * A method that starts an array of the "animal" type,
      * and accepts the size of the array (of an integer type),
      * and in each cell in the array inserts an object that is a type of animal (lion, elephant, bear, etc ...),

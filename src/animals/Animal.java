@@ -10,14 +10,14 @@ import mobility.Point;
 import food.IEdible;
 import utilities.MessageUtility;
 
-<<<<<<< HEAD
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-=======
+
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
 //Campus Ashdod
->>>>>>> main
+
 
 /**
  * An abstract class that defines the characteristics common to all animals. The department is expanding

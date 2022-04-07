@@ -6,6 +6,7 @@ import food.IEdible;
 import mobility.Point;
 import utilities.MessageUtility;
 
+import java.awt.*;
 import java.util.Random;
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
@@ -84,5 +85,50 @@ public class Lion extends RoaringAnimal {
     public EFoodType getFoodtype(){
         MessageUtility.logGetter(this.getName(), "getFoodType", LION);
         return LION;
+    }
+
+    @Override
+    public String getAnimalName() {
+        return null;
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
+    }
+
+    @Override
+    public void eatInc() {
+
+    }
+
+    @Override
+    public int getEatCount() {
+        return 0;
+    }
+
+    @Override
+    public boolean getChanges() {
+        return false;
+    }
+
+    @Override
+    public void setChanges(boolean state) {
+
+    }
+
+    @Override
+    public void loadImages(String nm) {
+
+    }
+
+    @Override
+    public void drawObject(Graphics g) {
+
+    }
+
+    @Override
+    public String getColor() {
+        return null;
     }
 }

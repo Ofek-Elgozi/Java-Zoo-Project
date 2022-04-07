@@ -7,6 +7,7 @@ import food.EFoodType;
 import mobility.Point;
 import utilities.MessageUtility;
 
+import java.awt.*;
 import java.util.Objects;
 
 //Ofek Elgozi 318432085
@@ -26,6 +27,51 @@ public class Bear extends RoaringAnimal {
     private static final String DEFAULT_FURCOLOR = "GRAY";
     private static final String roar = "Stands on its hind legs, roars and scratches its belly";
     private String furColor;
+
+    @Override
+    public String getAnimalName() {
+        return null;
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
+    }
+
+    @Override
+    public void eatInc() {
+
+    }
+
+    @Override
+    public int getEatCount() {
+        return 0;
+    }
+
+    @Override
+    public boolean getChanges() {
+        return false;
+    }
+
+    @Override
+    public void setChanges(boolean state) {
+
+    }
+
+    @Override
+    public void loadImages(String nm) {
+
+    }
+
+    @Override
+    public void drawObject(Graphics g) {
+
+    }
+
+    @Override
+    public String getColor() {
+        return null;
+    }
 
     private enum FurColors
     {
