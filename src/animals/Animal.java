@@ -2,10 +2,16 @@ package animals;
 
 import diet.IDiet;
 import food.EFoodType;
+import graphics.IAnimalBehavior;
+import graphics.IDrawable;
+import graphics.ZooPanel;
 import mobility.Mobile;
 import mobility.Point;
 import food.IEdible;
 import utilities.MessageUtility;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * An abstract class that defines the characteristics common to all animals. The department is expanding
@@ -14,11 +20,23 @@ import utilities.MessageUtility;
  * @author Elyasaf Sinvani
  * @see zoo.ZooActions
  */
-public abstract class Animal extends Mobile implements IEdible {
+public abstract class Animal extends Mobile implements IEdible, IDrawable, IAnimalBehavior {
 
     private String name;
     private double weight;
     private IDiet diet;
+    private final int EAT_DISTANCE = 5;
+    private int size;
+    private Color col;
+    private int horSpeed;
+    private int verSpeed;
+    private boolean coordChanged;
+    private Thread thread;
+    private int x_dir;
+    private int y_dir;
+    private int eatCount;
+    private ZooPanel pan;
+    private BufferedImage img1, img2;
 
     /**
      *The class constructor that receives as parameters the initial position of the animal (type of point), and the name of the animal (type of string).
