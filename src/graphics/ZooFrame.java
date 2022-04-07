@@ -13,8 +13,8 @@ public class ZooFrame extends JFrame
         frame.setTitle("Zoo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1920,774);
-        JLabel backgraund;
-        ImageIcon icon = new ImageIcon("C:\\Users\\אליסף סינואני\\Downloads\\assignment2_pictures\\assignment2_pictures\\savanna.jpg");
+        JLabel background;
+        ImageIcon icon = new ImageIcon("savanna.png");
         frame.setLayout(new BorderLayout());
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEADING,0,0));
@@ -39,7 +39,7 @@ public class ZooFrame extends JFrame
         panel.add(button5);
         panel.add(button6);
         frame.add(panel,BorderLayout.SOUTH);
-        backgraund =new JLabel("",icon,JLabel.CENTER);
+        background =new JLabel("",icon,JLabel.CENTER);
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenu BackgraondMenu = new JMenu("Backgraond");
@@ -70,7 +70,7 @@ public class ZooFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().setBackground(Color.WHITE);
-                frame.add(backgraund);
+                frame.add(background);
                 frame.invalidate();
                 frame.validate();
                 frame.repaint();
@@ -80,7 +80,7 @@ public class ZooFrame extends JFrame
         noneItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.remove(backgraund);
+                frame.remove(background);
                 frame.getContentPane().setBackground(Color.WHITE);
                 frame.invalidate();
                 frame.validate();
@@ -90,7 +90,7 @@ public class ZooFrame extends JFrame
         greenItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.remove(backgraund);
+                frame.remove(background);
                 frame.getContentPane().setBackground(Color.GREEN);
                 frame.invalidate();
                 frame.validate();
@@ -100,7 +100,7 @@ public class ZooFrame extends JFrame
         helpItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageIcon i = new ImageIcon("C:\\Users\\אליסף סינואני\\Downloads\\EEE.jpg");
+                ImageIcon i = new ImageIcon("LOGO.png");
                 JOptionPane.showMessageDialog(null,"Home Work 2\n GUI", "Message",JOptionPane.OK_OPTION,i);
                 frame.invalidate();
                 frame.validate();
