@@ -3,6 +3,9 @@ package animals;
 import food.EFoodType;
 import mobility.Point;
 import utilities.MessageUtility;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  * A class describing the sounds made by some of the animals in the zoo while eating

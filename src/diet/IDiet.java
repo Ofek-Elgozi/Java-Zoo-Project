@@ -3,6 +3,9 @@ package diet;
 import animals.Animal;
 import food.EFoodType;
 import food.IEdible;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  * Interface describing eating functionality

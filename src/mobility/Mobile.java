@@ -1,6 +1,9 @@
 package mobility;
 
 import utilities.MessageUtility;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  * An abstract class that defines motion in space and implements the Ilocatable interface.

@@ -3,6 +3,10 @@ package mobility;
 import food.EFoodType;
 import utilities.MessageUtility;
 
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
+
 /**
  * Points in two-dimensional space by X Y coordinates
  * @version 1.10 29 March 2022

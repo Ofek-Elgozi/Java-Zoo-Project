@@ -4,6 +4,9 @@ import animals.Animal;
 import food.EFoodType;
 import food.IEdible;
 import utilities.MessageUtility;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  * A class that defines animals that eat vegetarian. Implementing the IDiot interface.

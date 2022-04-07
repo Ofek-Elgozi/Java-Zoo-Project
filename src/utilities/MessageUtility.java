@@ -1,4 +1,7 @@
 package utilities;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  * A set of Logging functions to be used in appropriate classes

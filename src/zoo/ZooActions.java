@@ -6,6 +6,9 @@ import mobility.Point;
 
 import java.util.Random;
 import java.util.Scanner;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  * A department that implements all the actions in the zoo, including a main executable file (main)
@@ -191,6 +194,11 @@ public class ZooActions
                     //YES
                     System.out.print("Enter length of the trunk (Number Between 0.5 To 3):");
                     trunkLength = sc.nextDouble();
+                    while(trunkLength < 0.5 || trunkLength > 3)
+                    {
+                        System.out.println("Invalid input, Trunk Length Must Be Between 0.5 To 3:");
+                        trunkLength = sc.nextDouble();
+                    }
                     Animals_Array[i] = new Elephant(name, trunkLength);
                     break;
                 case 2:
@@ -228,6 +236,11 @@ public class ZooActions
                     //YES
                     System.out.print("Enter length of the neck (a real number between 1 - 2.5) : ");
                     neckLength = sc.nextDouble();
+                    while(neckLength < 1 || neckLength > 2.5)
+                    {
+                        System.out.println("Invalid input, Neck Length Must Be Between 1 - 2.5:");
+                        neckLength = sc.nextDouble();
+                    }
                     Animals_Array[i] = new Giraffe(name, neckLength);
                     break;
                 case 2:
@@ -264,7 +277,12 @@ public class ZooActions
                 case 1:
                     //YES
                     System.out.print("Enter the age (a integer number between 0 - 500) : ");
-                    age = sc.nextInt();//TODO check if we need to validate this input
+                    age = sc.nextInt();
+                    while(age <= 0 || age > 500)
+                    {
+                        System.out.println("Invalid input, Age Must Be Between 0 - 500 (Higher Then Zero):");
+                        age = sc.nextInt();
+                    }
                     Animals_Array[i] = new Turtle(name, age);
                     break;
                 case 2:
