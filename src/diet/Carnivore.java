@@ -3,7 +3,6 @@ package diet;
 import animals.Animal;
 import food.EFoodType;
 import food.IEdible;
-import utilities.MessageUtility;
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
 //Campus Ashdod
@@ -30,7 +29,6 @@ public class Carnivore implements IDiet
             isSuccess = true;
         else
             isSuccess=false;
-        MessageUtility.logBooleanFunction("Carnivore","canEat",food,isSuccess);
         return isSuccess;
     }
 

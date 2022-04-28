@@ -1,8 +1,5 @@
 package mobility;
 
-import food.EFoodType;
-import utilities.MessageUtility;
-
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
 //Campus Ashdod
@@ -116,7 +113,4 @@ public class Point
      * A method that returns as a string the coordinates X, Y, in the format "(X, Y)"
      * @return as a string the coordinates X, Y, in the format "(X, Y)"
      */
-    public String toString() {
-        return "(" + this.getX() + "," + this.getY() + ")" ;
-    }
 }

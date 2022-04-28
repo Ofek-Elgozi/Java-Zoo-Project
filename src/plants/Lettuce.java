@@ -1,26 +1,13 @@
 package plants;
 
-import utilities.MessageUtility;
+import graphics.ZooPanel;
 
 import java.awt.*;
 
-/**
- * @author baroh
- *
- */
+
 public class Lettuce extends Plant {
-	public Lettuce() {
-		MessageUtility.logConstractor("Lettuce", "Lettuce");
-	}
-
-	@Override
-	public void loadImages(String nm) {
-
-	}
-
-	@Override
-	public void drawObject(Graphics g) {
-
+	public Lettuce(ZooPanel zoopanel) {
+		super(zoopanel);
 	}
 
 	@Override

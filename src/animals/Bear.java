@@ -1,14 +1,11 @@
 package animals;
 
-import diet.Carnivore;
-import diet.Herbivore;
+import diet.IDiet;
 import diet.Omnivore;
 import food.EFoodType;
+import food.IEdible;
+import graphics.ZooPanel;
 import mobility.Point;
-import utilities.MessageUtility;
-
-import java.awt.*;
-import java.util.Objects;
 
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
@@ -21,156 +18,50 @@ import java.util.Objects;
  * @see Elephant
  */
 public class Bear extends RoaringAnimal {
-    private static final EFoodType BEAR = EFoodType.MEAT;
-    private static final double STARTING_WEIGHT = 308.2;
-    private static final Point STARTING_POSITION = new Point(100, 5);
-    private static final String DEFAULT_FURCOLOR = "GRAY";
-    private static final String roar = "Stands on its hind legs, roars and scratches its belly";
-    private String furColor;
+    private String furColor ;
+    private static final Point starting_location = new Point(100,5);
+    private static final Omnivore diet = new Omnivore();
+    private ZooPanel panel;
 
-    @Override
-    public String getAnimalName() {
-        return null;
+    public Bear(String name,float weight,String color,ZooPanel panel) {
+        super(name,starting_location,color, panel);
+        this.furColor = "gray";
+        super.setWeight(weight);
+        this.loadImages("bea");
+        this.panel = panel;
+        this.panel.repaint();
     }
 
-    @Override
-    public int getSize() {
-        return 0;
-    }
-
-    @Override
-    public void eatInc() {
-
-    }
-
-    @Override
-    public int getEatCount() {
-        return 0;
-    }
-
-    @Override
-    public boolean getChanges() {
+    public boolean setFur(String fur) {
+        if(fur == "gray" || fur == "white" || fur == "black") {
+            this.furColor = fur;
+            return true;
+        }
         return false;
     }
 
-    @Override
-    public void setChanges(boolean state) {
-
+    public void roar() {
     }
 
     @Override
-    public void loadImages(String nm) {
-
+    public EFoodType getFoodtype() {
+        return EFoodType.MEAT;
     }
 
     @Override
-    public void drawObject(Graphics g) {
-
-    }
-
-    @Override
-    public String getColor() {
-        return null;
-    }
-
-    private enum FurColors
-    {
-        WHITE("WHITE"),
-        GRAY("GRAY"),
-        BLACK("BLACK");
-
-        private final String color;
-
-        FurColors(String color) {
-            this.color = color;
+    public boolean eat(IEdible food) {
+        double W = diet.eat(this, food);
+        if(W > 0) {
+            super.setWeight(super.getWeight()+W);
+            super.makeSound();
+            return true;
         }
-
-        public String getFurcolorValue() {
-            return this.color;
-        }
+        return false;
     }
 
-    /**
-     * The class constructor that receives the bear name as a string,
-     * and initializes the other fields of the bear (weight, position, color ...)
-     * to be the constant values of creating a new "bear" type object
-     * @param name A string-type object that describes the bear's name
-     */
-    public Bear(String name)
-    {
-        super(name, STARTING_POSITION);
-        this.setWeight(STARTING_WEIGHT);
-        this.setFurColor(DEFAULT_FURCOLOR);
-        this.setDiet(new Omnivore());
+    public IDiet getDiet() {
+
+        return this.diet;
+
     }
-
-    /**
-     * Another constructor for the class that receives as the string the name of the bear and another string that
-     * describes the color of the bear (unlike the previous constructor that has a default value),
-     * and all other fields of the bear initialize to be the permanent fields of creating a "bear" object
-     * @param name A string describing the bear's name
-     * @param furColor A string depicting the color of the bear
-     */
-    public Bear(String name, String furColor)
-    {
-        super(name, STARTING_POSITION);
-        this.setWeight(STARTING_WEIGHT);
-        this.setFurColor(furColor);
-        this.setDiet(new Omnivore());
-    }
-
-    /**
-     *A Boolean method that receives a string describing a color name,
-     *  checks if the name of the color we got exists in one of the bear's color options, then returns "true", otherwise "false"
-     * @param furColor A string depicting some color
-     * @return If the color we received exists in one of the bear color options, "true" will be returned,
-     * otherwise "false" will be returned
-     */
-    public boolean validFurColor(String furColor)
-    {
-        boolean isSuccess = false;
-        for (FurColors color : FurColors.values())
-        {
-            if (color.getFurcolorValue().equals(furColor))
-            {
-                isSuccess = true;
-            }
-        }
-        MessageUtility.logBooleanFunction(this.getName(),"validFurColor",furColor,isSuccess);
-        return isSuccess;
-    }
-
-    /**
-     * A method that prints the sound the bear makes while eating
-     */
-    public void roar()
-    {
-        MessageUtility.logSound(this.getName(), roar);
-    }
-
-    /**
-     * A method that receives a color name (string type) as a parameter,
-     * checks if the color is valid (exists in one of the colors the bear can be),
-     * then changes the color of the bear to the color it received and returns "true",
-     * otherwise the bear's color changes to the default color ("gray") And a "lie" will be returned
-     * @param furColor A string depicting some color
-     * @return If the valid color is returned "true" otherwise "false" will be returned
-     */
-    public boolean setFurColor(String furColor)
-    {
-        boolean isSuccess = false;
-        if(validFurColor(furColor))
-        {
-            this.furColor = furColor;
-            isSuccess = true;
-        }
-        else
-        {
-            this.furColor = DEFAULT_FURCOLOR;
-        }
-        MessageUtility.logSetter(this.getName(),"setFurColor",furColor,isSuccess);
-        return isSuccess;
-    }
-
-
 }

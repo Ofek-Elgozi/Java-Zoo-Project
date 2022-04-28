@@ -1,6 +1,5 @@
 package mobility;
 
-import utilities.MessageUtility;
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
 //Campus Ashdod
