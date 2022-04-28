@@ -144,7 +144,6 @@ public class ZooPanel extends JPanel implements Runnable
                 foodDialog.pack();
                 foodDialog.setVisible(true);
                 setVisible(true);
-
             }
 
         });
