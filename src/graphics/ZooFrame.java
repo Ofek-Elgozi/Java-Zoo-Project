@@ -74,7 +74,6 @@ public class ZooFrame extends JFrame
                 frame.invalidate();
                 frame.validate();
                 frame.repaint();
-
             }
         });
         noneItem.addActionListener(new ActionListener() {
