@@ -1,45 +1,21 @@
 package graphics;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
-public class ZooFrame extends JFrame
-{
-    public static void main(String[] args)
-    {
-        JFrame frame = new JFrame();
-        frame.setTitle("Zoo");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1920,774);
-        JLabel background;
-        ImageIcon icon = new ImageIcon("savanna.png");
-        frame.setLayout(new BorderLayout());
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout(FlowLayout.LEADING,0,0));
-        JButton button1 = new JButton("Add Animal");
-        JButton button2 = new JButton("Move Animal");
-        JButton button3 = new JButton("Clear");
-        JButton button4 = new JButton("Food");
-        JButton button5 = new JButton("Info");
-        JButton button6 = new JButton("Exit");
-        button1.setPreferredSize(new Dimension(255,40));
-        button2.setPreferredSize(new Dimension(255,40));
-        button3.setPreferredSize(new Dimension(255,40));
-        button4.setPreferredSize(new Dimension(255,40));
-        button5.setPreferredSize(new Dimension(255,40));
-        button6.setPreferredSize(new Dimension(255,40));
-        panel.setPreferredSize(new Dimension(1920,40));
-        panel.setBackground(Color.lightGray);
-        panel.add(button1);
-        panel.add(button2);
-        panel.add(button3);
-        panel.add(button4);
-        panel.add(button5);
-        panel.add(button6);
-        frame.add(panel,BorderLayout.SOUTH);
-        background =new JLabel("",icon,JLabel.CENTER);
+public class ZooFrame extends JFrame {
+    private ZooPanel zooPanel;
+
+    public ZooFrame() {
+        zooPanel = new ZooPanel();
+        this.setTitle("Zoo");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(1920, 774);
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenu BackgraondMenu = new JMenu("Backgraond");
@@ -47,7 +23,8 @@ public class ZooFrame extends JFrame
         menuBar.add(fileMenu);
         menuBar.add(BackgraondMenu);
         menuBar.add(helpMenu);
-        frame.setJMenuBar(menuBar);
+        this.setJMenuBar(menuBar);
+        this.add(zooPanel);
         JMenuItem exitItem = new JMenuItem("Exit");
         JMenuItem imageItem = new JMenuItem("Image");
         JMenuItem greenItem = new JMenuItem("Green");
@@ -58,42 +35,29 @@ public class ZooFrame extends JFrame
         BackgraondMenu.add(greenItem);
         BackgraondMenu.add(noneItem);
         helpMenu.add(helpItem);
-        exitItem.addActionListener(new ActionListener()
-        {
+        exitItem.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
         imageItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.getContentPane().setBackground(Color.WHITE);
-                frame.add(background);
-                frame.invalidate();
-                frame.validate();
-                frame.repaint();
-            }
-        });
-        noneItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.remove(background);
-                frame.getContentPane().setBackground(Color.WHITE);
-                frame.invalidate();
-                frame.validate();
-                frame.repaint();
+                zooPanel.setBacgroud("savana");
+
             }
         });
         greenItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.remove(background);
-                frame.getContentPane().setBackground(Color.GREEN);
-                frame.invalidate();
-                frame.validate();
-                frame.repaint();
+                zooPanel.setBacgroud("green");
+            }
+        });
+        noneItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                zooPanel.setBacgroud("none");
             }
         });
         helpItem.addActionListener(new ActionListener() {
@@ -101,12 +65,13 @@ public class ZooFrame extends JFrame
             public void actionPerformed(ActionEvent e) {
                 ImageIcon i = new ImageIcon("LOGO.png");
                 JOptionPane.showMessageDialog(null,"Home Work 2\n GUI", "Message",JOptionPane.OK_OPTION,i);
-                frame.invalidate();
-                frame.validate();
-                frame.repaint();
             }
         });
-        frame.setResizable(true);
-        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        ZooFrame f = new ZooFrame();
+        f.setResizable(true);
+        f.setVisible(true);
     }
 }
