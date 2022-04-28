@@ -7,7 +7,6 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class InfoTable extends AbstractTableModel {
-<<<<<<< HEAD
 
     private ArrayList<Animal> animals;
     private ZooPanel zoopanel;
@@ -16,14 +15,6 @@ public class InfoTable extends AbstractTableModel {
     public InfoTable(ZooPanel zoopanel) {
         this.zoopanel = zoopanel;
 
-=======
-    private ArrayList<Animal> animals;
-    private ZooPanel zoopanel;
-    private final String[] columnNames = {"Name","Color","Weight","Hor","Ver","Eat"};
-    public InfoTable(ZooPanel zoopanel)
-    {
-        this.zoopanel = zoopanel;
->>>>>>> main
         animals = new ArrayList<Animal>();
         int tot_eat = 0;
         for(int i = 0; i< zoopanel.getAnimalSize(); i++) {
@@ -33,10 +24,7 @@ public class InfoTable extends AbstractTableModel {
         Animal total = new Lion("Total",10,"Red", zoopanel);
         total.setEat(tot_eat);
         animals.add(total);
-<<<<<<< HEAD
 
-=======
->>>>>>> main
     }
 
     @Override
@@ -71,10 +59,7 @@ public class InfoTable extends AbstractTableModel {
             case 4:if(a.getName()=="default") {return a.getVerSpeed();}
             else {return " ";}
             case 5:return a.getEatCount();
-<<<<<<< HEAD
 
-=======
->>>>>>> main
         }
         return null;
     }

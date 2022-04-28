@@ -22,7 +22,6 @@ import java.util.List;
 
 public class ZooPanel extends JPanel implements Runnable
 {
-    //Update
     private static final String BACKGROUND_PATH = "C:\\Java-Zoo-Project\\images";
     private BufferedImage image = null;
     private BufferedImage food_img = null;
