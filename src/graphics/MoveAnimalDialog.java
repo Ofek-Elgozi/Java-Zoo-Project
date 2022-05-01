@@ -25,7 +25,6 @@ import java.awt.event.ActionListener;
 
 public class MoveAnimalDialog extends JDialog implements ActionListener {
 
-    private Point location;
     private JComboBox<String> animals_box;
     private String[] animals_string;
     private JLabel labelX;
@@ -106,7 +105,7 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
                         zoopanel.getAnimals().get(array_index).setChanges(true);
                         zoopanel.manageZoo();
                     }
-                    else
+                    if(!Point.checkBoundaries(new Point(x,y)))
                     {
                         JOptionPane.showMessageDialog(null, "Out of bounds",
                                 "Message", JOptionPane.ERROR_MESSAGE, icon);
@@ -128,11 +127,6 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
 
     }
-
-
-
-
 }

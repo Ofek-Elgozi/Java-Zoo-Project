@@ -14,12 +14,22 @@ import mobility.Point;
  */
 public abstract class ChewingAnimals extends Animal
 {
-
+    /**
+     * The class builder who receives as parameters the name of the ChewingAnimals,
+     * its location, its color, and the panel in which it exists
+     * @param name A string describing the name of the animal
+     * @param location A "dot" type object that describes the position of the animal
+     * @param color A string describing the color of the animal
+     * @param panel A zoopanel object that describes the panel in which the animal is present
+     */
     public ChewingAnimals(String name, Point location, String color, ZooPanel panel) {
         super(name, location,color,panel);
 
     }
 
+    /**
+     * A method that performs chewing of the animal while eating
+     */
     public void makeSound() {
         this.chew();
     }
