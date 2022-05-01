@@ -44,14 +44,15 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
     private ZooPanel pan;
     private BufferedImage img1, img2;
 
-    public Animal(String name, Point location , String col ,ZooPanel zoopanel) {
+    public Animal(String name, Point location , String col ,ZooPanel zoopanel)
+    {
         super(location);
         this.name = name;
         eatCount = 0 ;
-        this.col = col;
         this.img1 = null;
         this.img2 =null;
         this.pan = zoopanel;
+        this.col = col;
     }
     public abstract void makeSound();
     public abstract boolean eat(IEdible food);
@@ -63,7 +64,8 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         return false;
     }
 
-    public boolean setDiet(IDiet diet) {
+    public boolean setDiet(IDiet diet)
+    {
         this.diet = diet;
         return true;
     }
@@ -77,34 +79,24 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
     }
 
     public String getAnimalName() {
-
         return this.getClass().getSimpleName();
-
     }
     public int getSize() {
-
         return this.size;
-
     }
     public void eatInc() {
         this.eatCount++;
-
     }
     public int getEatCount() {
         return this.eatCount;
-
     }
 
     public boolean getChanges () {
-
         return this.coordChanged;
-
     }
 
     public void setChanges (boolean state) {
-
         this.coordChanged = state;
-
     }
 
     public String getColor() {
@@ -182,10 +174,6 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         }
     }
 
-    public String getPicturePath() {
-        return this.PICTURE_PATH;
-    }
-
     public BufferedImage getImage1() {
         return this.img1;
     }
@@ -194,29 +182,21 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         return this.img2;
     }
 
-    public int getXdir() {
+    public int getX_dir() {
         return this.x_dir;
-    }
-
-    public ZooPanel getPanel() {
-        return this.pan;
     }
 
     public void drawObject (Graphics g)
     {
         int size =this.getSize();
-
-
-        if(this.getXdir() == 1)
-            g.drawImage(this.getImage1(), this.getLocation().getX()-size/2, this.getLocation().getX()-size/10, size, size, pan);
+        if(this.getX_dir() == 1)
+            g.drawImage(this.getImage1(), this.getLocation().getX()-size/2, this.getLocation().getY()-size/10, size, size, pan);
         else
-            g.drawImage(this.getImage2(), this.getLocation().getY(), this.getLocation().getY()-size/10, size, size, pan);
+            g.drawImage(this.getImage2(), this.getLocation().getX(), this.getLocation().getY()-size/10, size, size, pan);
     }
 
     public IDiet getDiet() {
-
         return this.diet;
-
     }
 
     public int getEatDistance() {

@@ -22,13 +22,10 @@ import java.util.List;
 
 public class ZooPanel extends JPanel implements Runnable
 {
-    private static final String BACKGROUND_PATH = "C:\\Java-Zoo-Project\\images";
     private BufferedImage image = null;
-    private BufferedImage food_img = null;
     private ArrayList<Animal> animals_list;
     private Plant plant;
-    private int color;
-    private Boolean flag = false;
+    private Boolean Check = false;
     private ImageIcon icon;
     private static final int LETTUCE = 1;
     private static final int CABBAGE = 2;
@@ -40,9 +37,8 @@ public class ZooPanel extends JPanel implements Runnable
         plant = null;
         icon = new ImageIcon("LOGO.png");
         this.setLayout(new BorderLayout());
-        this.setSize(1920, 744);
         JPanel Secendpanel = new JPanel();
-        Secendpanel.setLayout(new FlowLayout(FlowLayout.LEADING, 0, 0));
+        Secendpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         JButton button1 = new JButton("Add Animal");
         JButton button2 = new JButton("Move Animal");
         JButton button3 = new JButton("Clear");
@@ -130,12 +126,12 @@ public class ZooPanel extends JPanel implements Runnable
                 });
                 JLabel foodLabel = new JLabel("Please choose food");
                 foodLabel.setIcon(icon);
-                foodLabel.setIconTextGap(30);
+                foodLabel.setIconTextGap(25);
                 JPanel panel = new JPanel();
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setLayout(new FlowLayout());
-                buttonPanel.add(Lettuce);
                 buttonPanel.add(Cabbage);
+                buttonPanel.add(Lettuce);
                 buttonPanel.add(Meat);
                 panel.setLayout(new BorderLayout());
                 panel.add(buttonPanel, BorderLayout.SOUTH);
@@ -167,25 +163,23 @@ public class ZooPanel extends JPanel implements Runnable
                 System.exit(0);
             }
         });
-
-
     }
+
     @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
         Graphics2D gr = (Graphics2D) g;
         gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-
-        Dimension size = this.getSize();
-        gr.drawImage(image, 0, 0, size.width, size.height, this);
-
+        if(Check)
+        {
+            Dimension size = this.getSize();
+            gr.drawImage(image, 0, 0, size.width, size.height, this);
+        }
         try
         {
             for(Animal animals: animals_list)
                 animals.drawObject(gr);
-
             plant.drawObject(gr);
         }
         catch(Exception e)
@@ -194,61 +188,59 @@ public class ZooPanel extends JPanel implements Runnable
         }
     }
 
-    public void setBacgroud(String str) {
-        if (str == "savana") {
+    public void setBackground(String Picture)
+    {
+        if (Picture == "savana")
+        {
             try {
                 image = ImageIO.read(new File("C:\\Java-Zoo-Project\\images\\savanna.png"));
+                Check =true;
+                this.setBackground((Color) null);
                 repaint();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        if (str == "green") {
+        if (Picture == "green") {
             image = null;
-            repaint();
+            Check =false;
             this.setBackground(Color.GREEN);
-
-        } else if (str == "none") {
-            image = null;
             repaint();
+
+        } else if (Picture == "none") {
+            image = null;
+            Check =false;
             this.setBackground(Color.WHITE);
+            repaint();
         }
-    }
-
-
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(50, 50);
-    }
-
-    @Override
-    public void run() {
-
     }
 
     public void manageZoo()
     {
-        if(isChange()) { //if the animals moves
+        if(Changed() == true)
+        {
             repaint();
             List<Animal> toRemove = new ArrayList<Animal>();
             for(Animal animal : animals_list)
             {
-                if(animal.getDiet() instanceof Carnivore || animal.getDiet() instanceof Omnivore) {
+                if(animal.getDiet() instanceof Carnivore || animal.getDiet() instanceof Omnivore)
+                {
                     for(int i = 0 ; i < animals_list.size(); i++ )
                     {
                         if(animal.calcDistance(animals_list.get(i).getLocation()) < animals_list.get(i).getWeight())
                             if(animal.getWeight() > 2 * animals_list.get(i).getWeight())
-                                if(animal.eat(animals_list.get(i))) {
+                                if(animal.eat(animals_list.get(i)))
+                                {
                                     toRemove.add(animals_list.get(i));
                                     animal.eatInc();
                                     repaint();
                                 }
                     }
                 }
-                if(this.plant != null) {
-
-                    if( animal.calcDistance(new Point((int)this.getWidth()/2 - 20,(int)this.getHeight()/2 - 20)) < animal.getEatDistance() && animal.eat(this.plant)) {
+                if(this.plant != null)
+                {
+                    if( animal.calcDistance(new Point((int)this.getWidth()/2 - 20,(int)this.getHeight()/2 - 20)) < animal.getEatDistance() && animal.eat(this.plant))
+                    {
                         this.plant = null;
                         animal.eatInc();
                         repaint();
@@ -259,8 +251,10 @@ public class ZooPanel extends JPanel implements Runnable
         }
     }
 
-    private boolean isChange() {
-        for(Animal animal: animals_list) {
+    private boolean Changed()
+    {
+        for(Animal animal: animals_list)
+        {
             if(animal.getChanges())
                 return true;
         }
@@ -278,16 +272,17 @@ public class ZooPanel extends JPanel implements Runnable
         return this.animals_list;
     }
 
-    public void addAnimallist(Animal animal) {
+    public void addAnimallist(Animal animal)
+    {
         try {
-            if ( animals_list.size() == 10) {
+            if ( animals_list.size() == 10)
+            {
                 throw new ArrayIndexOutOfBoundsException();
             }
             animals_list.add(animal);
-
         }
         catch(ArrayIndexOutOfBoundsException error) {
-            ImageIcon icon =new ImageIcon("Mpicture.png");
+            ImageIcon icon =new ImageIcon("LOGO.png");
             JOptionPane.showMessageDialog(null, "You cannot add more than 10 animlas",
                     "Message", JOptionPane.ERROR_MESSAGE, icon);
         }
@@ -297,22 +292,19 @@ public class ZooPanel extends JPanel implements Runnable
         animals_list.clear();
     }
 
-    public void setPlant(int option ) {
-        if(option == 1) {
+    public void setPlant(int TempPlanet ) {
+        if(TempPlanet == 1) {
             this.plant = new Lettuce(this);
             this.plant.loadImages("lettuce.png");
             this.repaint();
-
-
-
         }
-        else if(option == 2) {
+        else if(TempPlanet == 2) {
             this.plant = new Cabbage(this);
             this.plant.loadImages("cabbage.png");
             this.repaint();
 
         }
-        else if (option == 3) {
+        else if (TempPlanet == 3) {
             this.plant = new Meat(this);
             this.plant.loadImages("meat.gif");
             this.repaint();
@@ -321,24 +313,9 @@ public class ZooPanel extends JPanel implements Runnable
             this.plant = null;
     }
 
-    public void setImage(String image) {
-        if(image == null) {
-            this.image = null;
+    @Override
+    public void run() {
 
-        }
-        else {
-            try {
-                this.image = ImageIO.read(new File(BACKGROUND_PATH+"\\"+image));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }}
-
-    public void setColor(int color) { //0 = white , 1 = green
-        this.color = color;
     }
 
-    public void setFlag(Boolean st) {
-        this.flag = st;
-    }
 }

@@ -22,7 +22,7 @@ public abstract class Mobile implements ILocatable
      */
     public Mobile(Point location)
     {
-        this.setLocation(location);
+        this.location = new Point(location.getX(),location.getY());
         this.totalDistance = 0;
     }
 
@@ -44,9 +44,7 @@ public abstract class Mobile implements ILocatable
      */
     public double calcDistance(Point newLocation)
     {
-        double X_coordinate = newLocation.getX() - this.location.getX();
-        double Y_coordinate = newLocation.getY() - this.location.getY();
-        return Math.sqrt(Math.pow(X_coordinate, 2) + Math.pow(Y_coordinate, 2));
+        return Math.sqrt(Math.pow((location.getX()-newLocation.getX()) ,2) +Math.pow((location.getY()-newLocation.getY()) ,2));
     }
 
     /**
@@ -63,7 +61,6 @@ public abstract class Mobile implements ILocatable
         {
             double distanceMade = this.calcDistance(newLocation);
             this.addTotalDistance(distanceMade);
-            this.setLocation(newLocation);
             return distanceMade;
         }
         return 0;
@@ -81,15 +78,12 @@ public abstract class Mobile implements ILocatable
      */
     public boolean setLocation(Point point)
     {
-        boolean isSuccess;
         if(Point.checkBoundaries(point) == true)
         {
-            isSuccess=true;
             this.location = new Point(point);
+            return true;
         }
-        else
-            isSuccess = false;
-        return isSuccess;
+        return false;
     }
 
     /**

@@ -43,20 +43,13 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
         displayPanel.setLayout(new BoxLayout(displayPanel, BoxLayout.PAGE_AXIS));
         move = new JButton("Move");
         move.addActionListener(this);
-
-
         int size = zoopanel.getAnimals().size() ;
-        int counter = 0;
         animals_string = new String[size];
         int LionCounter = 0;
         int BearCounter = 0;
         int ElephantCounter = 0;
         int GiraffeCounter = 0;
         int TurtleCounter = 0;
-
-
-
-
         for(int i = 0 ; i < size; i++) {
 
             if (zoopanel.getAnimals().get(i) == null)
@@ -105,40 +98,32 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
                     int x = Integer.parseInt(x_field.getText());
                     int y = Integer.parseInt(y_field.getText());
                     int array_index = animals_box.getSelectedIndex();
-                    if(ZooActions.move(zoopanel.getAnimals().get(array_index),new Point(x,y))) {
-
+                    if(ZooActions.move(zoopanel.getAnimals().get(array_index),new Point(x,y)))
+                    {
                         zoopanel.getAnimals().get(array_index).setChanges(true);
                         zoopanel.manageZoo();
-
-
                     }
-                    else {
+                    else
+                    {
                         JOptionPane.showMessageDialog(null, "Out of bounds",
                                 "Message", JOptionPane.ERROR_MESSAGE, icon);
                     }
-
-
                 }
-                catch(NumberFormatException err) {
+                catch(NumberFormatException err)
+                {
                     JOptionPane.showMessageDialog(null, "Wrong input entered",
                             "Message", JOptionPane.ERROR_MESSAGE, icon);
                 }
                 dispose();
             }
-
         });
-
-
-
         displayPanel.add(move);
         this.add(displayPanel);
         this.pack();
         this.setVisible(true);
-
     }
 
     @Override

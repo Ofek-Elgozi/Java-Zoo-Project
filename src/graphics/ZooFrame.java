@@ -1,12 +1,8 @@
 package graphics;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 public class ZooFrame extends JFrame {
     private ZooPanel zooPanel;
@@ -15,13 +11,12 @@ public class ZooFrame extends JFrame {
         zooPanel = new ZooPanel();
         this.setTitle("Zoo");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1920, 774);
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
-        JMenu BackgraondMenu = new JMenu("Backgraond");
-        JMenu helpMenu = new JMenu("Helo");
+        JMenu BackgroundMenu = new JMenu("Backgraond");
+        JMenu helpMenu = new JMenu("Help");
         menuBar.add(fileMenu);
-        menuBar.add(BackgraondMenu);
+        menuBar.add(BackgroundMenu);
         menuBar.add(helpMenu);
         this.setJMenuBar(menuBar);
         this.add(zooPanel);
@@ -31,9 +26,9 @@ public class ZooFrame extends JFrame {
         JMenuItem noneItem = new JMenuItem("None");
         JMenuItem helpItem = new JMenuItem("Help");
         fileMenu.add(exitItem);
-        BackgraondMenu.add(imageItem);
-        BackgraondMenu.add(greenItem);
-        BackgraondMenu.add(noneItem);
+        BackgroundMenu.add(imageItem);
+        BackgroundMenu.add(greenItem);
+        BackgroundMenu.add(noneItem);
         helpMenu.add(helpItem);
         exitItem.addActionListener(new ActionListener() {
             @Override
@@ -44,20 +39,20 @@ public class ZooFrame extends JFrame {
         imageItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                zooPanel.setBacgroud("savana");
+                zooPanel.setBackground("savana");
 
             }
         });
         greenItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                zooPanel.setBacgroud("green");
+                zooPanel.setBackground("green");
             }
         });
         noneItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                zooPanel.setBacgroud("none");
+                zooPanel.setBackground("none");
             }
         });
         helpItem.addActionListener(new ActionListener() {
@@ -67,11 +62,12 @@ public class ZooFrame extends JFrame {
                 JOptionPane.showMessageDialog(null,"Home Work 2\n GUI", "Message",JOptionPane.OK_OPTION,i);
             }
         });
+        this.setSize(1550, 774);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         ZooFrame f = new ZooFrame();
-        f.setResizable(true);
         f.setVisible(true);
     }
 }
