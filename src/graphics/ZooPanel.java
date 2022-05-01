@@ -92,11 +92,9 @@ public class ZooPanel extends JPanel implements Runnable
                     @Override
                     public void actionPerformed(ActionEvent e1)
                     {
-                        if (this != null) {
                             setPlant(LETTUCE);
                             foodDialog.dispose();
 
-                        }
                     }
                 });
 
@@ -107,10 +105,10 @@ public class ZooPanel extends JPanel implements Runnable
                     public void actionPerformed(ActionEvent e1)
                     {
 
-                        if (this != null) {
+
                             setPlant(CABBAGE);
                             foodDialog.dispose();
-                        }
+
                     }
                 });
 
@@ -118,10 +116,9 @@ public class ZooPanel extends JPanel implements Runnable
                     @Override
                     public void actionPerformed(ActionEvent e1) {
 
-                        if (this != null) {
                             setPlant(MEAT);
                             foodDialog.dispose();
-                        }
+
                     }
                 });
                 JLabel foodLabel = new JLabel("Please choose food");
@@ -186,6 +183,7 @@ public class ZooPanel extends JPanel implements Runnable
         {
             return;
         }
+
     }
 
     public void setBackground(String Picture)

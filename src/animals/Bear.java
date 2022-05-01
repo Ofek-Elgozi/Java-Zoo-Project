@@ -18,26 +18,16 @@ import mobility.Point;
  * @see Elephant
  */
 public class Bear extends RoaringAnimal {
-    private String furColor ;
     private static final Point starting_location = new Point(100,5);
     private static final Omnivore diet = new Omnivore();
     private ZooPanel panel;
 
     public Bear(String name,float weight,String color,ZooPanel panel) {
         super(name,starting_location,color, panel);
-        this.furColor = "gray";
         super.setWeight(weight);
         this.loadImages("bea");
         this.panel = panel;
         this.panel.repaint();
-    }
-
-    public boolean setFur(String fur) {
-        if(fur == "gray" || fur == "white" || fur == "black") {
-            this.furColor = fur;
-            return true;
-        }
-        return false;
     }
 
     public void roar() {
