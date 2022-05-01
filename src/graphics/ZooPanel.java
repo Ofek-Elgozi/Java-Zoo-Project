@@ -37,6 +37,7 @@ public class ZooPanel extends JPanel implements Runnable
         plant = null;
         icon = new ImageIcon("LOGO.png");
         this.setLayout(new BorderLayout());
+        this.setSize(1550, 774);
         JPanel Secendpanel = new JPanel();
         Secendpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         JButton button1 = new JButton("Add Animal");
@@ -237,7 +238,7 @@ public class ZooPanel extends JPanel implements Runnable
                 }
                 if(this.plant != null)
                 {
-                    if( animal.calcDistance(new Point((int)this.getWidth()/2 - 20,(int)this.getHeight()/2 - 20)) < animal.getEatDistance() && animal.eat(this.plant))
+                    if( animal.calcDistance(new Point(775,337)) < animal.getEatDistance() && animal.eat(this.plant))
                     {
                         this.plant = null;
                         animal.eatInc();

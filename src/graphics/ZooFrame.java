@@ -11,6 +11,7 @@ public class ZooFrame extends JFrame {
         zooPanel = new ZooPanel();
         this.setTitle("Zoo");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(1550, 774);
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenu BackgroundMenu = new JMenu("Backgraond");
@@ -62,12 +63,12 @@ public class ZooFrame extends JFrame {
                 JOptionPane.showMessageDialog(null,"Home Work 2\n GUI", "Message",JOptionPane.OK_OPTION,i);
             }
         });
-        this.setSize(1550, 774);
     }
 
     public static void main(String[] args)
     {
         ZooFrame f = new ZooFrame();
         f.setVisible(true);
+        f.setResizable(false);
     }
 }
