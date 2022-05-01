@@ -18,20 +18,27 @@ import javax.imageio.ImageIO;
 
 public abstract class Plant implements IEdible, ILocatable, IDrawable {
 
-	private double height;
 	private Point location;
-	private double weight;
+	private int height;
+	private int width;
 	private ZooPanel zoopanel;
 	private BufferedImage plant_image = null;
 
 	public Plant(ZooPanel zoopanel) {
-		Random rand = new Random();
-		int x = rand.nextInt(30);
-		int y = rand.nextInt(12);
+		int x = 400;
+		int y = 260;
 		this.location = new Point(x, y);
-		this.height = rand.nextInt(30);
-		this.weight = rand.nextInt(12);
+		this.height = 40;
+		this.width = 40;
 		this.zoopanel = zoopanel;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
 	}
 
 	@Override
@@ -42,10 +49,6 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 	@Override
 	public Point getLocation() {
 		return this.location;
-	}
-
-	public double getWeight() {
-		return weight;
 	}
 
 	@Override
@@ -65,7 +68,7 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 	public void drawObject(Graphics g)
 	{
 		if (plant_image != null)
-			g.drawImage(plant_image, 400, 270, 40, 40, zoopanel);
+			g.drawImage(plant_image, this.location.getX(), this.location.getY(), this.getWidth(), this.getHeight(), zoopanel);
 		zoopanel.manageZoo();
 	}
 
