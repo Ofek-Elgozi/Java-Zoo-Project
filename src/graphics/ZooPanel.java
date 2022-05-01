@@ -238,7 +238,7 @@ public class ZooPanel extends JPanel implements Runnable
                 }
                 if(this.plant != null)
                 {
-                    if( animal.calcDistance(new Point(775,337)) < animal.getEatDistance() && animal.eat(this.plant))
+                    if( animal.calcDistance(new Point(400,270)) < animal.getEatDistance() && animal.eat(this.plant))
                     {
                         this.plant = null;
                         animal.eatInc();
