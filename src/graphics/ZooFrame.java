@@ -11,7 +11,7 @@ public class ZooFrame extends JFrame {
         zooPanel = new ZooPanel();
         this.setTitle("Zoo");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1550, 774);
+        this.setSize(800, 600);
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenu BackgroundMenu = new JMenu("Backgraond");

@@ -13,8 +13,8 @@ package mobility;
 public class Point {
     private int x;
     private int y;
-    private final int Max_x = 1550;
-    private final int Max_y = 744;
+    private final int Max_x = 800;
+    private final int Max_y = 600;
     private final int Min_x = 0;
     private final int Min_y = 0;
 

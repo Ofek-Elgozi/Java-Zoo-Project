@@ -37,7 +37,7 @@ public class ZooPanel extends JPanel implements Runnable
         plant = null;
         icon = new ImageIcon("LOGO.png");
         this.setLayout(new BorderLayout());
-        this.setSize(1550, 774);
+        this.setSize(800, 600);
         JPanel Secendpanel = new JPanel();
         Secendpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         JButton button1 = new JButton("Add Animal");
@@ -46,12 +46,12 @@ public class ZooPanel extends JPanel implements Runnable
         JButton button4 = new JButton("Food");
         JButton button5 = new JButton("Info");
         JButton button6 = new JButton("Exit");
-        button1.setPreferredSize(new Dimension(255, 40));
-        button2.setPreferredSize(new Dimension(255, 40));
-        button3.setPreferredSize(new Dimension(255, 40));
-        button4.setPreferredSize(new Dimension(255, 40));
-        button5.setPreferredSize(new Dimension(255, 40));
-        button6.setPreferredSize(new Dimension(255, 40));
+        button1.setPreferredSize(new Dimension(130, 40));
+        button2.setPreferredSize(new Dimension(130, 40));
+        button3.setPreferredSize(new Dimension(130, 40));
+        button4.setPreferredSize(new Dimension(130, 40));
+        button5.setPreferredSize(new Dimension(130, 40));
+        button6.setPreferredSize(new Dimension(130, 40));
         Secendpanel.add(button1);
         Secendpanel.add(button2);
         Secendpanel.add(button3);

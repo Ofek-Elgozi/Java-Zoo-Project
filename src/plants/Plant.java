@@ -39,10 +39,6 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 		return EFoodType.VEGETABLE;
 	}
 
-	public double getHeight() {
-		return this.height;
-	}
-
 	@Override
 	public Point getLocation() {
 		return this.location;
@@ -52,33 +48,11 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 		return weight;
 	}
 
-	public boolean setHeight(double height) {
-
-		boolean isSuccess = (height >= 0);
-		if (isSuccess) {
-			this.height = height;
-		} else {
-			this.height = 0;
-		}
-		return isSuccess;
-	}
-
 	@Override
 	public boolean setLocation(Point newLocation) {
 		boolean isSuccess = Point.checkBoundaries(newLocation);
 		if (isSuccess) {
 			this.location = newLocation;
-		}
-		//MessageUtility.logSetter(this.getClass().getSimpleName(), "setLocation", newLocation, isSuccess);
-		return isSuccess;
-	}
-
-	public boolean setWeight(double weight) {
-		boolean isSuccess = (weight >= 0);
-		if (isSuccess) {
-			this.weight = weight;
-		} else {
-			this.weight = 0;
 		}
 		return isSuccess;
 	}
@@ -91,7 +65,7 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 	public void drawObject(Graphics g)
 	{
 		if (plant_image != null)
-			g.drawImage(plant_image, 775, 337, 40, 40, zoopanel);
+			g.drawImage(plant_image, 400, 270, 40, 40, zoopanel);
 		zoopanel.manageZoo();
 	}
 
@@ -111,6 +85,4 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 	public String getColor() {
 		return null;
 	}
-
-
 }
