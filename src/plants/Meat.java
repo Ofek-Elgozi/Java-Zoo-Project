@@ -15,5 +15,4 @@ public class Meat extends Plant
     public EFoodType getFoodtype() {
         return EFoodType.MEAT;
     }
-
 }

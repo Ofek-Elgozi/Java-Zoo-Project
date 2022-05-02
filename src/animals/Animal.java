@@ -222,16 +222,18 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
      * A method that receives the name of the animal as a string and loads the image from the image file according
      * to the name of the animal it received and according to the updated field of the color of the animal,
      * performs the name of the animal image to the left and the animal image to the right
-     * @param nm A string describing the name of the animal in a format written on the image file of that animal
+     * @param ani_name A string describing th
+     *           e name of the animal in a format written on the image file of that animal
      */
-    public void loadImages(String nm)
+    public void loadImages(String ani_name)
     {
         if(this.col == "Red")
         {
+
             try
             {
-                this.img1 = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm + "_r_1.png"));
-                this.img2 = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm + "_r_2.png"));
+                this.img1 = ImageIO.read(new File(PICTURE_PATH +"\\"+ ani_name + "_r_1.png"));
+                this.img2 = ImageIO.read(new File(PICTURE_PATH +"\\"+ ani_name + "_r_2.png"));
             }
             catch (IOException e)
             {
@@ -242,8 +244,8 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         {
             try
             {
-                this.img1 = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm + "_b_1.png"));
-                this.img2 = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm + "_b_2.png"));
+                this.img1 = ImageIO.read(new File(PICTURE_PATH +"\\"+ ani_name + "_b_1.png"));
+                this.img2 = ImageIO.read(new File(PICTURE_PATH +"\\"+ ani_name + "_b_2.png"));
             }
             catch (IOException e)
             {
@@ -255,8 +257,8 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         {
             try
             {
-                this.img1 = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm + "_n_1.png"));
-                this.img2 = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm + "_n_2.png"));
+                this.img1 = ImageIO.read(new File(PICTURE_PATH +"\\"+ ani_name + "_n_1.png"));
+                this.img2 = ImageIO.read(new File(PICTURE_PATH +"\\"+ ani_name + "_n_2.png"));
             }
             catch (IOException e)
             {
