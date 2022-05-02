@@ -1,5 +1,7 @@
 package plants;
-
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 import food.EFoodType;
 import graphics.ZooPanel;
 

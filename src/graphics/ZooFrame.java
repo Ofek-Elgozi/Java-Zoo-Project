@@ -3,7 +3,9 @@ package graphics;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 /**
  *A department that describes a zoo frame, builds a frame, and includes the entire user menu on the zoo frame
  * @author Elyasaf Sinvani

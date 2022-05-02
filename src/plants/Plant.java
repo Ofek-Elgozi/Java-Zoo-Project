@@ -14,7 +14,9 @@ import mobility.ILocatable;
 import mobility.Point;
 
 import javax.imageio.ImageIO;
-
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 /**
  * Plant Class That Set Food For Animals (Meat,Lattuce,Cabbage)
  */

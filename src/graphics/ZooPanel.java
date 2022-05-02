@@ -18,7 +18,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 /**
  *The "panel" department of the zoo, for creating "panel" objects within the "panel",
  *  with the rest of the outer panel being the background where all the animals inside the zoo will be, and the inner panel will contain all the options the user can make at the zoo

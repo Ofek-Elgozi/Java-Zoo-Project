@@ -5,6 +5,9 @@ import animals.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 
 /**
  *Class That Gives The Option To Add An Animal To The Panel

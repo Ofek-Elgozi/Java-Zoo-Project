@@ -1,5 +1,7 @@
 package graphics;
-
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 public interface IAnimalBehavior
 {
     public String getAnimalName();

@@ -5,7 +5,9 @@ import animals.Lion;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
-
+//Ofek Elgozi 318432085
+//Elyasaf Sinvani 318551728
+//Campus Ashdod
 /**
  *Class That Gives The Option To See The Information About All The Animals That Are Exist In The Panel With Several Fields. (Name,Color,Weigth,Horizonal Speed,Vertical Speed)
  */
