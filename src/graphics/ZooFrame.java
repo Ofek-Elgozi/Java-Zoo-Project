@@ -5,11 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
+ *A department that describes a zoo frame, builds a frame, and includes the entire user menu on the zoo frame
+ * @author Elyasaf Sinvani
+ * @see ZooPanel
  */
 public class ZooFrame extends JFrame {
     private ZooPanel zooPanel;
 
+    /**
+     * The class builder initializes the "zoopanel" field, and builds the zoo frame including a menu of possibilities
+     * (frame background change performed by "zoopanel", program closing, and user help)
+     */
     public ZooFrame() {
         zooPanel = new ZooPanel();
         this.setTitle("Zoo");
