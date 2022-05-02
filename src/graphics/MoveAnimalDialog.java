@@ -23,6 +23,9 @@ import zoo.ZooActions;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
+/**
+ *Class That Gives The Option To Move An Animal In The Panel
+ */
 public class MoveAnimalDialog extends JDialog implements ActionListener {
 
     private JComboBox<String> animals_box;
@@ -35,7 +38,11 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
     private JButton move;
 
 
-
+    /**
+     * Constractor THat Build The Box(Panel) To Move An Animal With Serveral Fields (X Cordinate,Y Cordinate)
+     * @param Zoo
+     * @param zoopanel
+     */
     public MoveAnimalDialog(ZooFrame Zoo,ZooPanel zoopanel) {
         super(Zoo, "Move animal", true);
         displayPanel = new JPanel();
@@ -93,7 +100,11 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
 
 
         move.addActionListener(new ActionListener() {
-
+            /**
+             *Listner That Active When We Click On The Move Button And Checks If All The Fields Are Vaild
+             * And Checks Which Animal Has Chosen And Move The Animal If The Location Is Valid. (If The Animal Moved Its Weight Will Be Update)
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {

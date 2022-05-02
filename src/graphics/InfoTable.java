@@ -6,12 +6,19 @@ import animals.Lion;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
+/**
+ *Class That Gives The Option To See The Information About All The Animals That Are Exist In The Panel With Several Fields. (Name,Color,Weigth,Horizonal Speed,Vertical Speed)
+ */
 public class InfoTable extends AbstractTableModel {
 
     private ArrayList<Animal> animals;
     private ZooPanel zoopanel;
     private final String[] columnNames = {"Name","Color","Weight","Hor","Ver","Eat"};
 
+    /**
+     * Constractor THat Build The Table(Panel) To See An Information About Animals With Serveral Fields (Select Animal,Size,Horizon Speed, Vertical Speed)
+     * @param zoopanel
+     */
     public InfoTable(ZooPanel zoopanel) {
         this.zoopanel = zoopanel;
 
@@ -27,23 +34,41 @@ public class InfoTable extends AbstractTableModel {
 
     }
 
+    /**
+     * Getter For The Amount Of The Animals That Added
+     * @return Amount Of Animals
+     */
     @Override
     public int getRowCount() {
-
         return animals.size();
     }
 
+    /**
+     * Getter For The Amount Of Fields In The Information Table
+     * @return 6 Columns
+     */
     @Override
     public int getColumnCount() {
 
         return 6;
     }
 
+    /**
+     * Getter For The Name Of The Field In The Table
+     * @param column
+     * @return Column Name
+     */
     @Override
     public String getColumnName(int column) {
         return columnNames[column];
     }
 
+    /**
+     * Get The Values For A Specific Column (Field) And Animal In The Table
+     * @param rowIndex
+     * @param columnIndex
+     * @return Information About A Specific Field Of A Specific Animal
+     */
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Animal a = animals.get(rowIndex);
