@@ -12,7 +12,7 @@ import mobility.Point;
 //Campus Ashdod
 
 /**
- * A class describing a "giraffe" type animal describes the bear's voices and general behavior
+ * A class describing a "giraffe" type animal describes the giraffe's voices and general behavior
  * @version 1.10 3 April 2022
  * @author Ofek Elgozi
  * @see Turtle
