@@ -183,7 +183,7 @@ public class ZooPanel extends JPanel implements Runnable
     /**
      * A method that draws the background of the zoo inside the outer panel,
      * and draws all the animals in the zoo on the outer panel
-     * @param g A "graphics" object that allows you to draw the animal images and background on the outer panel
+     * @param g A "graphics" object that allows you to draw the animal images and background on the outer panel.
      */
     @Override
     public void paintComponent(Graphics g)

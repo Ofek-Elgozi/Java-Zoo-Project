@@ -102,7 +102,7 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
         move.addActionListener(new ActionListener() {
             /**
              *Listner That Active When We Click On The Move Button And Checks If All The Fields Are Vaild
-             * And Checks Which Animal Has Chosen And Move The Animal If The Location Is Valid. (If The Animal Moved Its Weight Will Be Update)
+             * And Checks Which Animal Has Chosen And Move The Animal If The Location Is Valid. (If The Animal Moved Its Weight Will Be Update).
              * @param e
              */
             @Override
