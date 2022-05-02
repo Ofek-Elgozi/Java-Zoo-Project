@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class ZooPanel extends JPanel implements Runnable
 {
     private BufferedImage image = null;
@@ -32,6 +35,9 @@ public class ZooPanel extends JPanel implements Runnable
     private static final int MEAT = 3;
     private static final int DELETE = 4;
 
+    /**
+     *
+     */
     public ZooPanel() {
         animals_list = new ArrayList<Animal>();
         plant = null;
@@ -163,6 +169,10 @@ public class ZooPanel extends JPanel implements Runnable
         });
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g)
     {
@@ -187,6 +197,10 @@ public class ZooPanel extends JPanel implements Runnable
 
     }
 
+    /**
+     *
+     * @param Picture
+     */
     public void setBackground(String Picture)
     {
         if (Picture == "savana")
@@ -214,6 +228,9 @@ public class ZooPanel extends JPanel implements Runnable
         }
     }
 
+    /**
+     *
+     */
     public void manageZoo()
     {
         if(Changed() == true)
@@ -251,6 +268,10 @@ public class ZooPanel extends JPanel implements Runnable
         }
     }
 
+    /**
+     *
+     * @return
+     */
     private boolean Changed()
     {
         for(Animal animal: animals_list)
@@ -262,16 +283,28 @@ public class ZooPanel extends JPanel implements Runnable
 
     }
 
+    /**
+     *
+     * @return
+     */
     public int getAnimalSize()
     {
         return this.animals_list.size();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Animal> getAnimals() {
 
         return this.animals_list;
     }
 
+    /**
+     *
+     * @param animal
+     */
     public void addAnimallist(Animal animal)
     {
         try {
@@ -288,10 +321,17 @@ public class ZooPanel extends JPanel implements Runnable
         }
     }
 
+    /**
+     *
+     */
     public void DeleteAllAnimals() {
         animals_list.clear();
     }
 
+    /**
+     *
+     * @param TempPlanet
+     */
     public void setPlant(int TempPlanet ) {
         if(TempPlanet == 1) {
             this.plant = new Lettuce(this);

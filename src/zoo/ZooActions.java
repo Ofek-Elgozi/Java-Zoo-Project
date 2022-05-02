@@ -20,6 +20,15 @@ import java.util.Scanner;
 
 public class ZooActions
 {
+    /**
+     * A method that checks the type of object we received if it is an animal type does dawncusting from an object to an animal,
+     * and activates whether the "eat" function of the specific animal,
+     * if the animal was able to eat returns "true" if not returns "false"
+     * @param animal Describing a type of animal
+     * @param food that describes the type of food (EFoodType)
+     * @return if the animal was able to eat returns "true" if not returns "false"
+     */
+
     public static boolean eat(Object animal, IEdible food) {
 
         if(animal instanceof Lion)
@@ -72,6 +81,17 @@ public class ZooActions
         }
         return false;
     }
+
+    /**
+     * a static method that gets an animal and a point checks if the point is between bounds
+     * if the animal is a known animal and moves the animal
+     * @param animal
+     *            - an animal object
+     * @param point
+     *            - a point object
+     * @return boolean
+     *            - true if the animal moved successfully, otherwise false
+     */
 
     public static boolean  move(Object animal, Point point){
 

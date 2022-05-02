@@ -68,35 +68,50 @@ public class Point {
      * @return returns the current X coordinate (type integer)
      */
 
+    public int getX() {
+        return this.x;
+    }
+
     /**
      * A method that returns the current Y coordinate
      * @return returns the current Y coordinate (type integer)
      */
 
-    /**
-     * A method that returns as a string the coordinates X, Y, in the format "(X, Y)"
-     * @return as a string the coordinates X, Y, in the format "(X, Y)"
-     */
-
-    public int getX() {
-        return this.x;
-    }
-
     public int getY() {
         return this.y;
     }
+
+    /**
+     * A method that returns the possible mimnimum X coordinate
+     * @return returns the possible mimnimum X coordinate (type integer)
+     */
 
     public int getMin_x() {
         return this.Min_x;
     }
 
+    /**
+     * A method that returns the possible mimnimum Y coordinate
+     * @return returns the possible mimnimum Y coordinate (type integer)
+     */
+
     public int getMin_y() {
         return this.Min_y;
     }
 
+    /**
+     * A method that returns the possible maximum x coordinate
+     * @return returns the possible maximum x coordinate (type integer)
+     */
+
     public int getMax_x() {
         return this.Max_x;
     }
+
+    /**
+     * A method that returns the possible maximum y coordinate
+     * @return returns the possible maximum y coordinate (type integer)
+     */
 
     public int getMax_y() {
         return this.Max_y;

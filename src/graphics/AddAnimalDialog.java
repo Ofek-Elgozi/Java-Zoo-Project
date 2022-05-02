@@ -6,8 +6,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *Class That Gives The Option To Add An Animal To The Panel
+ */
 public class AddAnimalDialog extends JDialog  implements ActionListener {
-
     private JLabel label;
     private JComboBox<String> box;
     private JLabel size_label;
@@ -22,10 +24,11 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
     private ZooPanel zoopanel;
     private String colors[]= {"Natural","Red","Blue"};
     private String[] animals = {"Lion","Bear","Elephant","Giraffe","Turtle"};
-
-
-
-
+    /**
+     *Constractor THat Build The Box(Panel) To Add An Animal With Serveral Fields (Select Animal,Size,Horizon Speed, Vertical Speed)
+     * @param zoopanel
+     * @param Zoo
+     */
     public AddAnimalDialog(ZooPanel zoopanel, ZooFrame Zoo) {
         super(Zoo, "Add animal", true);
         displayPanel = new JPanel();
@@ -38,8 +41,6 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
         animal_color.addActionListener(this);
         displayPanel.setLayout(new BoxLayout(displayPanel, BoxLayout.PAGE_AXIS));
         ImageIcon icon =new ImageIcon("LOGO.png");
-
-
         this.label = new JLabel();
         this.label = new JLabel("Select animal");
         this.label.setVerticalTextPosition(JLabel.TOP);
@@ -54,6 +55,11 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
         displayPanel.add(vertical_speed_field= new JTextField());
         displayPanel.add(animal_color);
         create.addActionListener(new ActionListener(){
+            /**
+             *Listner That Active When We Click On The Create Button And Checks If All The Fields Are Vaild
+             * And Checks Which Animal Has Chosen And Set The Animal Weight And Other Parameters That Depends On The Selected Animal.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -70,17 +76,13 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
                     switch(animal_choosen) {
                         case "Lion":
                             weight = (float) (size * 0.8);
-
-
                             Animal lion = new Lion(name,weight,color,zoopanel);
                             lion.setHorSpeed(horizon_speed);
                             lion.setVerSpeed(vertical_speed);
                             lion.setSize(size);
                             zoopanel.addAnimallist(lion);
                             zoopanel.repaint();
-
                             break;
-
                         case "Bear":
                             weight = (float) (size * 1.5);
                             Animal bear = new Bear(name,weight,color,zoopanel);
@@ -89,7 +91,6 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
                             bear.setSize(size);
                             zoopanel.addAnimallist(bear);
                             break;
-
                         case "Giraffe":
                             weight = (float) (size * 2.2);
                             Animal giraffe = new Giraffe(name,weight,color,zoopanel);
@@ -98,8 +99,6 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
                             giraffe.setSize(size);
                             zoopanel.addAnimallist(giraffe);
                             break;
-
-
                         case "Elephant":
                             weight = size * 10;
                             Animal elephant = new Elephant(name,weight,color,zoopanel);
@@ -108,8 +107,6 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
                             elephant.setSize(size);
                             zoopanel.addAnimallist(elephant);
                             break;
-
-
                         case "Turtle":
                             weight = (float) (size * 0.5);
                             Animal turtle = new Turtle(name,weight,color,zoopanel);
@@ -118,25 +115,16 @@ public class AddAnimalDialog extends JDialog  implements ActionListener {
                             turtle.setSize(size);
                             zoopanel.addAnimallist(turtle);
                             break;
-
-
                     }
-
                 }
                 catch(NumberFormatException err) {
                     JOptionPane.showMessageDialog(null, "Wrong input entered",
                             "Message", JOptionPane.ERROR_MESSAGE, icon);
                 }
-
                 dispose();
-
             }});
-
         displayPanel.add(create);
-
         this.add(displayPanel);
-
-
         this.pack();
         this.setVisible(true);
     }

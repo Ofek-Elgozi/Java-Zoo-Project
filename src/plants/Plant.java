@@ -15,15 +15,21 @@ import mobility.Point;
 
 import javax.imageio.ImageIO;
 
-
-public abstract class Plant implements IEdible, ILocatable, IDrawable {
-
+/**
+ * Plant Class That Set Food For Animals (Meat,Lattuce,Cabbage)
+ */
+public abstract class Plant implements IEdible, ILocatable, IDrawable
+{
 	private Point location;
 	private int height;
 	private int width;
 	private ZooPanel zoopanel;
 	private BufferedImage plant_image = null;
 
+	/**
+	 * Constractor Of Object Plant That Set Width,Height,Location And ZooPanel
+	 * @param zoopanel
+	 */
 	public Plant(ZooPanel zoopanel) {
 		int x = 400;
 		int y = 260;
@@ -33,24 +39,45 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 		this.zoopanel = zoopanel;
 	}
 
+	/**
+	 * Getter That Return The Width Of The Of The Food (Meat,Lattuce,Cabbage)
+	 * @return Return The Width Of The Of The Food
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 * Getter Thar Return The Height Of The Of The Food (Meat,Lattuce,Cabbage)
+	 * @return The Height Of The Of The Food
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 * Getter That Gives The Food Type
+	 * @return The Food Type
+	 */
 	@Override
 	public EFoodType getFoodtype() {
 		return EFoodType.VEGETABLE;
 	}
 
+	/**
+	 * Getter That Gives The Food Location
+	 * @return The Location Of The Food
+	 */
 	@Override
 	public Point getLocation() {
 		return this.location;
 	}
 
+	/**
+	 * Setter That Setting The Food Location
+	 * @param newLocation
+	 * @return True If The Food Was Located, Otherwise False
+	 */
 	@Override
 	public boolean setLocation(Point newLocation) {
 		boolean isSuccess = Point.checkBoundaries(newLocation);
@@ -60,11 +87,19 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 		return isSuccess;
 	}
 
+	/**
+	 * Method ToString Gives The Name Of The Food (Meat,Lattuce,Cabbage)
+	 * @return The Name Of The Food
+	 */
 	@Override
 	public String toString() {
 		return "[" + this.getClass().getSimpleName() + "] ";
 	}
 
+	/**
+	 * Draw Food To The Center Of The Screen (400,260)
+	 * @param g
+	 */
 	public void drawObject(Graphics g)
 	{
 		if (plant_image != null)
@@ -72,11 +107,15 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 		zoopanel.manageZoo();
 	}
 
-	public void loadImages(String nm)
+	/**
+	 * Load The Picture Of The Food (Meat,Lattuce,Cabbage)
+	 * @param plant_name
+	 */
+	public void loadImages(String plant_name)
 	{
 		try
 		{
-			plant_image = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm));
+			plant_image = ImageIO.read(new File(PICTURE_PATH +"\\"+ plant_name));
 		}
 		catch (IOException e)
 		{
@@ -84,6 +123,10 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable {
 		}
 	}
 
+	/**
+	 * Getter For Color Field
+	 * @return The Color Of The Food
+	 */
 	@Override
 	public String getColor() {
 		return null;
