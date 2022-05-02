@@ -3,7 +3,6 @@ package graphics;
 import animals.Animal;
 import diet.Carnivore;
 import diet.Omnivore;
-import mobility.Point;
 import plants.Cabbage;
 import plants.Lettuce;
 import plants.Meat;
@@ -276,7 +275,7 @@ public class ZooPanel extends JPanel implements Runnable
                 if(this.plant != null)
                 {
 //                    if( animal.calcDistance(new Point(400,260)) < animal.getEatDistance() && animal.eat(this.plant))
-                    if(plant.getLocation().getX() - animal.getLocation().getX() < 10 && plant.getLocation().getY() - animal.getLocation().getY() < 10)
+                    if(plant.getLocation().getX() - animal.getLocation().getX() < 10 && plant.getLocation().getY() - animal.getLocation().getY() < 10 && animal.eat(this.plant))
                     {
                         this.plant = null;
                         animal.eatInc();
