@@ -79,7 +79,14 @@ public class ZooPanel extends JPanel implements Runnable
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MoveAnimalDialog(new ZooFrame(), ZooPanel.this);
+                if (animals_list.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "There are no animals in the zoo, please add an animal first ...",
+                            "Message", JOptionPane.ERROR_MESSAGE, icon);
+                }
+                else
+                {
+                    new MoveAnimalDialog(new ZooFrame(), ZooPanel.this);
+                }
             }
         });
         button3.addActionListener(new ActionListener() {
