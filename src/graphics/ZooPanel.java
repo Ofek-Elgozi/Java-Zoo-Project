@@ -53,6 +53,7 @@ public class ZooPanel extends JPanel implements Runnable
         this.setSize(800, 600);
         JPanel Secendpanel = new JPanel();
         Secendpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        Secendpanel.setBackground(Color.BLUE);
         JButton button1 = new JButton("Add Animal");
         JButton button2 = new JButton("Sleep");
         JButton button7 = new JButton("Wake up");
