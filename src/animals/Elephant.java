@@ -31,6 +31,7 @@ public class Elephant extends ChewingAnimals{
     public Elephant(String name,float weight,String color,ZooPanel panel){
         super(name, starting_location,color,panel);
         super.setWeight(weight);
+        super.setDiet(diet);
         this.loadImages("elf");
         this.panel = panel;
         this.panel.repaint();

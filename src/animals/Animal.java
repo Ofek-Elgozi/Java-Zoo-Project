@@ -27,9 +27,11 @@ import java.io.IOException;
  * @author Elyasaf Sinvani
  * @see zoo.ZooActions
  */
-public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,IDrawable {
+public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,IDrawable,Runnable {
 
     private String name;
+    protected Thread thread;
+    protected boolean threadSuspended;
     private double weight;
     private IDiet diet;
     private final int EAT_DISTANCE = 10;
@@ -55,15 +57,23 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
     public Animal(String name, Point location , String col ,ZooPanel zoopanel)
     {
         super(location);
+        thread = new Thread(this);
+        threadSuspended = false;
         this.name = name;
         eatCount = 0 ;
         this.img1 = null;
         this.img2 =null;
         this.pan = zoopanel;
         this.col = col;
+        thread.start();
     }
     public abstract void makeSound();
     public abstract boolean eat(IEdible food);
+
+    public Thread getThread()
+    {
+        return this.thread;
+    }
 
     /**
      * A Boolean method that accepts the weight of the animal, if the cursor is greater than zero,
@@ -79,6 +89,10 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         return false;
     }
 
+    public boolean getthreadSuspended()
+    {
+        return this.threadSuspended;
+    }
     /**
      * A method that receives a "diet" object and places it on the current animal and returns "true"
      * @param diet An object that describes the type of food the animal eats
@@ -301,7 +315,7 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         if(this.getX_dir() == 1)
             g.drawImage(this.getImage1(), this.getLocation().getX()-size/2, this.getLocation().getY()-size/10, size, size, pan);
         else
-            g.drawImage(this.getImage2(), this.getLocation().getX(), this.getLocation().getY()-size/10, size, size, pan);
+            g.drawImage(this.getImage2(), this.getLocation().getX()-size/2, this.getLocation().getY()-size/10, size, size, pan);
     }
 
     /**
@@ -319,6 +333,86 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
      */
     public int getEatDistance() {
         return this.EAT_DISTANCE;
+    }
+    @Override
+    public void setSuspended()
+    {
+        threadSuspended = true;
+    }
+    @Override
+    public void setResumed()
+    {
+        threadSuspended = false;
+        synchronized (this) {
+            this.notify();
+        }
+
+
+    }
+    @Override
+    public void run()
+    {
+        while (true)
+        {
+            if(threadSuspended) {
+                synchronized (this) {
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            if (this.pan.getPlant() != null && this.diet.canEat(this.pan.getPlant().getFoodtype()))
+            {
+                if (this.getLocation().getY() !=260 || this.getLocation().getX()!=400) {
+                    if (this.getLocation().getY() > 260) {
+                        this.y_dir = -1;
+                    } else {
+                        this.y_dir = 1;
+                    }
+                    if (this.getLocation().getX() > 400) {
+                        this.x_dir = -1;
+                    } else {
+                        this.x_dir = 1;
+                    }
+                    this.setLocation(new Point(this.getLocation().getX() + this.horSpeed * x_dir, this.getLocation().getY() + this.verSpeed * y_dir));
+                    try {
+                        this.thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            else
+            {
+                if (this.getLocation().getX() > 790)
+                {
+                    this.x_dir =-1;
+                }
+                if (this.getLocation().getY() > 590)
+                {
+                    this.y_dir =-1;
+                }
+                if (this.getLocation().getX() < 10)
+                {
+                    this.x_dir =1;
+                }
+                if (this.getLocation().getY() < 10)
+                {
+                    this.y_dir =1;
+                }
+
+                this.setLocation(new Point(this.getLocation().getX()+this.horSpeed*x_dir,this.getLocation().getY()+this.verSpeed*y_dir));
+                try {
+                    this.thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
 

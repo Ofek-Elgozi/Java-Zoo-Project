@@ -35,6 +35,7 @@ public class ZooPanel extends JPanel implements Runnable
     private Plant plant;
     private Boolean Check = false;
     private ImageIcon icon;
+    private Thread controller;
     private static final int LETTUCE = 1;
     private static final int CABBAGE = 2;
     private static final int MEAT = 3;
@@ -44,6 +45,7 @@ public class ZooPanel extends JPanel implements Runnable
      * The class builder who initializes the panel within a panel of the zoo
      */
     public ZooPanel() {
+        controller = new Thread(this);
         animals_list = new ArrayList<Animal>();
         plant = null;
         icon = new ImageIcon("LOGO.png");
@@ -52,19 +54,22 @@ public class ZooPanel extends JPanel implements Runnable
         JPanel Secendpanel = new JPanel();
         Secendpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         JButton button1 = new JButton("Add Animal");
-        JButton button2 = new JButton("Move Animal");
+        JButton button2 = new JButton("Sleep");
+        JButton button7 = new JButton("Wake up");
         JButton button3 = new JButton("Clear");
         JButton button4 = new JButton("Food");
         JButton button5 = new JButton("Info");
         JButton button6 = new JButton("Exit");
-        button1.setPreferredSize(new Dimension(130, 40));
-        button2.setPreferredSize(new Dimension(130, 40));
-        button3.setPreferredSize(new Dimension(130, 40));
-        button4.setPreferredSize(new Dimension(130, 40));
-        button5.setPreferredSize(new Dimension(130, 40));
-        button6.setPreferredSize(new Dimension(130, 40));
+        button1.setPreferredSize(new Dimension(112, 40));
+        button2.setPreferredSize(new Dimension(112, 40));
+        button3.setPreferredSize(new Dimension(112, 40));
+        button4.setPreferredSize(new Dimension(112, 40));
+        button5.setPreferredSize(new Dimension(112, 40));
+        button6.setPreferredSize(new Dimension(112, 40));
+        button7.setPreferredSize(new Dimension(112, 40));
         Secendpanel.add(button1);
         Secendpanel.add(button2);
+        Secendpanel.add(button7);
         Secendpanel.add(button3);
         Secendpanel.add(button4);
         Secendpanel.add(button5);
@@ -86,14 +91,43 @@ public class ZooPanel extends JPanel implements Runnable
                 }
                 else
                 {
-                    new MoveAnimalDialog(new ZooFrame(), ZooPanel.this);
+                    for (Animal A :animals_list)
+                    {
+                        if(!A.getthreadSuspended())
+                        {
+                            A.setSuspended();
+                        }
+
+                    }
                 }
+            }
+        });
+        button7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (animals_list.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "There are no animals in the zoo, please add an animal first ...",
+                            "Message", JOptionPane.ERROR_MESSAGE, icon);
+                }
+                else
+                {
+                    for (Animal A :animals_list)
+                    {
+                        if(A.getthreadSuspended()) {
+                            A.setResumed();
+                        }
+                    }
+                }
+
             }
         });
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for(Animal A:animals_list)
+                {
+                    A.getThread().interrupt();
+                }
                 DeleteAllAnimals();
                 setPlant(DELETE);
                 repaint();
@@ -111,8 +145,9 @@ public class ZooPanel extends JPanel implements Runnable
                     @Override
                     public void actionPerformed(ActionEvent e1)
                     {
-                            setPlant(LETTUCE);
+                        ZooPanel.this.setPlant(LETTUCE);
                             foodDialog.dispose();
+                            repaint();
 
                     }
                 });
@@ -125,8 +160,9 @@ public class ZooPanel extends JPanel implements Runnable
                     {
 
 
-                            setPlant(CABBAGE);
+                            ZooPanel.this.setPlant(CABBAGE);
                             foodDialog.dispose();
+                            repaint();
 
                     }
                 });
@@ -135,8 +171,9 @@ public class ZooPanel extends JPanel implements Runnable
                     @Override
                     public void actionPerformed(ActionEvent e1) {
 
-                            setPlant(MEAT);
+                        ZooPanel.this.setPlant(MEAT);
                             foodDialog.dispose();
+                            repaint();
 
                     }
                 });
@@ -176,11 +213,19 @@ public class ZooPanel extends JPanel implements Runnable
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for(Animal A:animals_list)
+                {
+                    A.getThread().interrupt();
+                }
+                controller.interrupt();
                 System.exit(0);
             }
         });
+        controller.start();
     }
-
+    public Thread getController(){
+        return this.controller;
+    }
     /**
      * A method that draws the background of the zoo inside the outer panel,
      * and draws all the animals in the zoo on the outer panel
@@ -252,10 +297,11 @@ public class ZooPanel extends JPanel implements Runnable
      * if the distance of the animal from the food is less than 10 pixels in both axis X and axis Y the animal eats the food,
      * delete the food from the panel and increase the weight of the animal eaten
      */
-    public void manageZoo()
+    public void run()
     {
-        if(Changed() == true)
+        while(true)
         {
+
             repaint();
             List<Animal> toRemove = new ArrayList<Animal>();
             for(Animal animal : animals_list)
@@ -284,6 +330,10 @@ public class ZooPanel extends JPanel implements Runnable
                         repaint();
                     }
                 }
+            }
+            for(Animal A :toRemove)
+            {
+                A.getThread().interrupt();
             }
             animals_list.removeAll(toRemove);
         }
@@ -321,6 +371,10 @@ public class ZooPanel extends JPanel implements Runnable
     public ArrayList<Animal> getAnimals() {
 
         return this.animals_list;
+    }
+    public Plant getPlant()
+    {
+        return this.plant;
     }
 
     /**
@@ -377,11 +431,6 @@ public class ZooPanel extends JPanel implements Runnable
         }
         else
             this.plant = null;
-    }
-
-    @Override
-    public void run() {
-
     }
 
 }

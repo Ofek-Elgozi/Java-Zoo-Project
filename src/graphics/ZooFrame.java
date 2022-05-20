@@ -1,5 +1,7 @@
 package graphics;
 
+import animals.Animal;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,6 +47,12 @@ public class ZooFrame extends JFrame {
         exitItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for(Animal A:zooPanel.getAnimals())
+                {
+                    A.getThread().interrupt();
+                }
+                zooPanel.getController().interrupt();
+
                 System.exit(0);
             }
         });

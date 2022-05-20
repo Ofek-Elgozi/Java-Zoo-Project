@@ -116,7 +116,7 @@ public class MoveAnimalDialog extends JDialog implements ActionListener {
                     if(ZooActions.move(zoopanel.getAnimals().get(array_index),new Point(x,y)))
                     {
                         zoopanel.getAnimals().get(array_index).setChanges(true);
-                        zoopanel.manageZoo();
+                        //zoopanel.manageZoo();
                     }
                     if(!Point.checkBoundaries(new Point(x,y)))
                     {

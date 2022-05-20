@@ -106,7 +106,7 @@ public abstract class Plant implements IEdible, ILocatable, IDrawable
 	{
 		if (plant_image != null)
 			g.drawImage(plant_image, this.location.getX(), this.location.getY(), this.getWidth(), this.getHeight(), zoopanel);
-		zoopanel.manageZoo();
+		//zoopanel.manageZoo();
 	}
 
 	/**
