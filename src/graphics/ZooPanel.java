@@ -127,7 +127,7 @@ public class ZooPanel extends JPanel implements Runnable
             public void actionPerformed(ActionEvent e) {
                 for(Animal A:animals_list)
                 {
-                    A.getThread().interrupt();
+                    A.getThread().stop();
                 }
                 DeleteAllAnimals();
                 setPlant(DELETE);
@@ -216,9 +216,9 @@ public class ZooPanel extends JPanel implements Runnable
             public void actionPerformed(ActionEvent e) {
                 for(Animal A:animals_list)
                 {
-                    A.getThread().interrupt();
+                    A.getThread().stop();
                 }
-                controller.interrupt();
+                controller.stop();
                 System.exit(0);
             }
         });
@@ -334,7 +334,7 @@ public class ZooPanel extends JPanel implements Runnable
             }
             for(Animal A :toRemove)
             {
-                A.getThread().interrupt();
+                A.getThread().stop();
             }
             animals_list.removeAll(toRemove);
         }

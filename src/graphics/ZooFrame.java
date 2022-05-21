@@ -49,9 +49,9 @@ public class ZooFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 for(Animal A:zooPanel.getAnimals())
                 {
-                    A.getThread().interrupt();
+                    A.getThread().stop();
                 }
-                zooPanel.getController().interrupt();
+                zooPanel.getController().stop();
 
                 System.exit(0);
             }

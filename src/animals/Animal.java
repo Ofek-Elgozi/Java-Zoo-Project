@@ -313,9 +313,9 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
     {
         int size =this.getSize();
         if(this.getX_dir() == 1)
-            g.drawImage(this.getImage1(), this.getLocation().getX()-size/2, this.getLocation().getY()-size/10, size, size, pan);
+            g.drawImage(this.getImage1(), this.getLocation().getX()-this.size/2, this.getLocation().getY()-this.size/10, this.size/2, this.size, pan);
         else
-            g.drawImage(this.getImage2(), this.getLocation().getX()-size/2, this.getLocation().getY()-size/10, size, size, pan);
+            g.drawImage(this.getImage2(), this.getLocation().getX()-this.size/2, this.getLocation().getY()-this.size/10, this.size/2, this.size, pan);
     }
 
     /**

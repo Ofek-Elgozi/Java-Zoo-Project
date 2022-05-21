@@ -32,6 +32,7 @@ public class Bear extends RoaringAnimal {
     public Bear(String name,float weight,String color,ZooPanel panel) {
         super(name,starting_location,color, panel);
         super.setWeight(weight);
+        super.setDiet(diet);
         this.loadImages("bea");
         this.panel = panel;
         this.panel.repaint();
