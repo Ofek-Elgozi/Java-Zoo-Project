@@ -79,7 +79,7 @@ public class ZooFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ImageIcon i = new ImageIcon("LOGO.png");
-                JOptionPane.showMessageDialog(null,"Home Work 2\n GUI", "Message",JOptionPane.OK_OPTION,i);
+                JOptionPane.showMessageDialog(null,"Home Work 3\n GUI", "Message",JOptionPane.OK_OPTION,i);
             }
         });
     }
