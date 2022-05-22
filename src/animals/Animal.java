@@ -15,16 +15,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
 //Campus Ashdod
-
 
 /**
  * An abstract class that defines the characteristics common to all animals. The department is expanding
  * Mobile and implements IEdible
  * @version 1.10 1 April 2022
- * @author Elyasaf Sinvani
+ * @author Ofek Elgozi
  * @see zoo.ZooActions
  */
 public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,IDrawable,Runnable {
@@ -335,10 +335,18 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         return this.EAT_DISTANCE;
     }
     @Override
+
+    /**
+     * The Animal Is Now On "Sleep" Mode.
+     */
     public void setSuspended()
     {
         threadSuspended = true;
     }
+
+    /**
+     * The Animal Is Now UnFreezed (Moving)
+     */
     @Override
     public void setResumed()
     {
@@ -346,9 +354,16 @@ public abstract class Animal extends Mobile implements IEdible,IAnimalBehavior,I
         synchronized (this) {
             this.notify();
         }
-
-
     }
+
+    /**
+     * A method that deals with the movement of the animal
+     * checks if the animal can eat a plant/meat that located in specific cordinates
+     * and if its diet is fits to the plant/meat type the meat/plant will be removed from the screen and the info table will be update.
+     * checks if the animal got the edges of the screen and if it did, the animal will change its direction.
+     * checks to which side the animal is forward, and then put the relevant picture of the animal (Left/Right Face)
+     * each step of the animal will be delayed by 100 mills.
+     */
     @Override
     public void run()
     {

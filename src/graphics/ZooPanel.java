@@ -21,6 +21,7 @@ import java.util.List;
 //Ofek Elgozi 318432085
 //Elyasaf Sinvani 318551728
 //Campus Ashdod
+
 /**
  *The "panel" department of the zoo, for creating "panel" objects within the "panel",
  *  with the rest of the outer panel being the background where all the animals inside the zoo will be, and the inner panel will contain all the options the user can make at the zoo
@@ -224,9 +225,11 @@ public class ZooPanel extends JPanel implements Runnable
         });
         controller.start();
     }
+
     public Thread getController(){
         return this.controller;
     }
+
     /**
      * A method that draws the background of the zoo inside the outer panel,
      * and draws all the animals in the zoo on the outer panel
@@ -373,6 +376,11 @@ public class ZooPanel extends JPanel implements Runnable
 
         return this.animals_list;
     }
+
+    /**
+     *
+     * @return The Plant (Meat,Lettuce,Cabbege)
+     */
     public Plant getPlant()
     {
         return this.plant;
